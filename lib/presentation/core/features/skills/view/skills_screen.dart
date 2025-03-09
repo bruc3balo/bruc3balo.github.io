@@ -114,7 +114,7 @@ class _SkillsPageState extends State<SkillsPage> {
                 Positioned(
                   right: 0,
                   left: widget.isMobileView ? 270 : 350,
-                  bottom: 250,
+                  bottom: widget.isMobileView ? 200 : 250,
                   child: PsstPressHere(
                     isMobileView: widget.isMobileView,
                   ),
