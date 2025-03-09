@@ -1,6 +1,6 @@
-import 'package:bruce_omukoko_portfolio/theme/theme.dart';
-import 'package:bruce_omukoko_portfolio/utils/functions.dart';
-import 'package:bruce_omukoko_portfolio/utils/reusable_widgets.dart';
+import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
+import 'package:bruce_omukoko_portfolio/presentation/utils/functions.dart';
+import 'package:bruce_omukoko_portfolio/presentation/core/ui/reusable_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -58,7 +58,7 @@ class ContactMePage extends StatelessWidget {
                   child: Card(
                     color: darkBackground,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -92,12 +92,15 @@ class ContactMePage extends StatelessWidget {
                             },
                             label: (a) => a.value,
                           ),
-                          ElevatedButton(
-                            onPressed: Navigator.of(context).pop,
-                            style: const ButtonStyle(
-                              backgroundColor: WidgetStatePropertyAll(Colors.red),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ElevatedButton(
+                              onPressed: Navigator.of(context).pop,
+                              style: const ButtonStyle(
+                                backgroundColor: WidgetStatePropertyAll(Colors.red),
+                              ),
+                              child: const Text("Never mind"),
                             ),
-                            child: const Text("Never mind"),
                           ),
                         ],
                       ),

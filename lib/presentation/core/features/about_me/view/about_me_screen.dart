@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:bruce_omukoko_portfolio/data/data.dart';
-import 'package:bruce_omukoko_portfolio/theme/theme.dart';
-import 'package:bruce_omukoko_portfolio/utils/reusable_widgets.dart';
+import 'package:bruce_omukoko_portfolio/presentation/core/ui/reusable_widgets.dart';
+import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,6 +11,7 @@ class AboutMePage extends StatelessWidget {
     required this.goToFlutterResume,
     required this.scrollToSkills,
     required this.scrollToContactMe,
+    required this.isMobileView,
     super.key,
   });
 
@@ -19,27 +19,24 @@ class AboutMePage extends StatelessWidget {
   final Function() goToFlutterResume;
   final Function() scrollToSkills;
   final Function() scrollToContactMe;
+  final bool isMobileView;
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (_, size) {
-        bool isMobileView = size.maxWidth < mobileSizeBorder;
+    if (isMobileView) {
+      return AboutMeMobile(
+        goToFlutterResume: goToFlutterResume,
+        goToBackendResume: goToBackendResume,
+        scrollToSkills: scrollToSkills,
+        scrollToContactMe: scrollToContactMe,
+      );
+    }
 
-        return isMobileView
-            ? AboutMeMobile(
-                goToFlutterResume: goToFlutterResume,
-                goToBackendResume: goToBackendResume,
-                scrollToSkills: scrollToSkills,
-                scrollToContactMe: scrollToContactMe,
-              )
-            : AboutMeDesktop(
-                goToFlutterResume: goToFlutterResume,
-                goToBackendResume: goToBackendResume,
-                scrollToSkills: scrollToSkills,
-                scrollToContactMe: scrollToContactMe,
-              );
-      },
+    return AboutMeDesktop(
+      goToFlutterResume: goToFlutterResume,
+      goToBackendResume: goToBackendResume,
+      scrollToSkills: scrollToSkills,
+      scrollToContactMe: scrollToContactMe,
     );
   }
 }
@@ -148,8 +145,7 @@ class AboutMeDesktop extends StatelessWidget {
                                 padding: WidgetStateProperty.all(
                                   const EdgeInsets.all(15.0),
                                 ),
-                                backgroundColor:
-                                    WidgetStateProperty.resolveWith(
+                                backgroundColor: WidgetStateProperty.resolveWith(
                                   (state) {
                                     if (state.contains(WidgetState.hovered)) {
                                       return Colors.transparent;
@@ -166,8 +162,7 @@ class AboutMeDesktop extends StatelessWidget {
                                 side: WidgetStateProperty.resolveWith(
                                   (state) {
                                     if (state.contains(WidgetState.hovered)) {
-                                      return BorderSide(
-                                          color: orange, width: 1.0);
+                                      return BorderSide(color: orange, width: 1.0);
                                     }
 
                                     return null;
@@ -188,8 +183,7 @@ class AboutMeDesktop extends StatelessWidget {
                             child: ElevatedButton(
                               onPressed: scrollToSkills,
                               style: ButtonStyle(
-                                padding: WidgetStateProperty.all(
-                                    const EdgeInsets.all(15.0)),
+                                padding: WidgetStateProperty.all(const EdgeInsets.all(15.0)),
                                 backgroundColor: WidgetStateProperty.all(
                                   Colors.transparent,
                                 ),
@@ -239,8 +233,7 @@ class AboutMeDesktop extends StatelessWidget {
                                 onTap: () {
                                   Scrollable.ensureVisible(
                                     moreKey.currentContext!,
-                                    duration:
-                                        const Duration(milliseconds: 1000),
+                                    duration: const Duration(milliseconds: 1000),
                                     curve: Curves.easeIn,
                                   );
                                 },
@@ -332,10 +325,8 @@ class AboutMeDesktop extends StatelessWidget {
                               child: ElevatedButton(
                                 onPressed: goToBackendResume,
                                 style: ButtonStyle(
-                                  padding: WidgetStateProperty.all(
-                                      const EdgeInsets.all(15.0)),
-                                  backgroundColor:
-                                      WidgetStateProperty.resolveWith(
+                                  padding: WidgetStateProperty.all(const EdgeInsets.all(15.0)),
+                                  backgroundColor: WidgetStateProperty.resolveWith(
                                     (state) {
                                       if (state.contains(WidgetState.hovered)) {
                                         return Colors.green; //
@@ -391,8 +382,7 @@ class AboutMeDesktop extends StatelessWidget {
                                   padding: WidgetStateProperty.all(
                                     const EdgeInsets.all(15.0),
                                   ),
-                                  backgroundColor:
-                                      WidgetStateProperty.resolveWith(
+                                  backgroundColor: WidgetStateProperty.resolveWith(
                                     (state) {
                                       if (state.contains(WidgetState.hovered)) {
                                         return Colors.blue;
@@ -571,7 +561,8 @@ class AboutMeMobile extends StatelessWidget {
                           onPressed: scrollToSkills,
                           style: ButtonStyle(
                             padding: WidgetStateProperty.all(
-                                const EdgeInsets.all(15.0)),
+                              const EdgeInsets.all(15.0),
+                            ),
                             backgroundColor: WidgetStateProperty.resolveWith(
                               (state) {
                                 if (state.contains(WidgetState.hovered)) {
@@ -612,8 +603,7 @@ class AboutMeMobile extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: scrollToSkills,
                           style: ButtonStyle(
-                            padding: WidgetStateProperty.all(
-                                const EdgeInsets.all(15.0)),
+                            padding: WidgetStateProperty.all(const EdgeInsets.all(15.0)),
                             backgroundColor: WidgetStateProperty.all(
                               Colors.transparent,
                             ),
@@ -736,8 +726,6 @@ class AboutMeMobile extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: SvgPicture.asset("flash.svg"),
                     ),
-
-
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Padding(
@@ -745,11 +733,9 @@ class AboutMeMobile extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: goToBackendResume,
                           style: ButtonStyle(
-                            padding: WidgetStateProperty.all(
-                                const EdgeInsets.all(15.0)),
-                            backgroundColor:
-                            WidgetStateProperty.resolveWith(
-                                  (state) {
+                            padding: WidgetStateProperty.all(const EdgeInsets.all(15.0)),
+                            backgroundColor: WidgetStateProperty.resolveWith(
+                              (state) {
                                 if (state.contains(WidgetState.hovered)) {
                                   return Colors.green; //
                                 }
@@ -763,7 +749,7 @@ class AboutMeMobile extends StatelessWidget {
                               ),
                             ),
                             side: WidgetStateProperty.resolveWith(
-                                  (state) {
+                              (state) {
                                 if (state.contains(WidgetState.hovered)) {
                                   return const BorderSide(
                                     color: Colors.white,
@@ -807,9 +793,8 @@ class AboutMeMobile extends StatelessWidget {
                             padding: WidgetStateProperty.all(
                               const EdgeInsets.all(15.0),
                             ),
-                            backgroundColor:
-                            WidgetStateProperty.resolveWith(
-                                  (state) {
+                            backgroundColor: WidgetStateProperty.resolveWith(
+                              (state) {
                                 if (state.contains(WidgetState.hovered)) {
                                   return Colors.blue;
                                 }
@@ -823,7 +808,7 @@ class AboutMeMobile extends StatelessWidget {
                               ),
                             ),
                             side: WidgetStateProperty.resolveWith(
-                                  (state) {
+                              (state) {
                                 if (state.contains(WidgetState.hovered)) {
                                   return const BorderSide(
                                     color: Colors.white,

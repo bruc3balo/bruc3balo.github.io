@@ -1,33 +1,18 @@
-import 'package:bruce_omukoko_portfolio/data/data.dart';
-import 'package:bruce_omukoko_portfolio/theme/theme.dart';
-import 'package:bruce_omukoko_portfolio/utils/functions.dart';
+import 'package:bruce_omukoko_portfolio/data/models/models.dart';
+import 'package:bruce_omukoko_portfolio/presentation/core/features/projects/view_model/project_view_model.dart';
+import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
+import 'package:bruce_omukoko_portfolio/presentation/utils/extensions.dart';
+import 'package:bruce_omukoko_portfolio/presentation/utils/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rive/rive.dart';
 
 class ProjectsPage extends StatelessWidget {
-  const ProjectsPage({super.key});
+  const ProjectsPage({
+    required this.projectViewModel,
+    super.key,
+  });
 
-  List<Project> get projects => [
-        Project(
-          name: 'Truth or Drink',
-          about:
-              "Truth or Drink is a drinking game where players take turns asking each other questions. If someone doesn't want to answer, they take a drink instead. It's a fun way to get to know each other better while enjoying some drinks.",
-          url: 'https://truthordrink-kg.web.app',
-          cover: const RiveAnimation.asset(
-            "bruc3balo/assets/tod.riv",
-          ),
-          stack: [
-            springTechnology,
-            flutterTechnology,
-            mongoDbTechnology,
-            riveTechnology,
-            kubernetesTechnology,
-            dockerTechnology,
-            visualParadigmTechnology,
-          ],
-        ),
-      ];
+  final ProjectViewModel projectViewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +33,14 @@ class ProjectsPage extends StatelessWidget {
         ListView(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          children: projects
+          children: projectViewModel.allProjects
               .map(
                 (e) => ProjectItem(
                   project: e,
+                  getTechnology: projectViewModel.getTechnology,
                 ),
-              ).toList(),
+              )
+              .toList(),
         ),
       ],
     );
@@ -63,10 +50,12 @@ class ProjectsPage extends StatelessWidget {
 class ProjectItem extends StatelessWidget {
   const ProjectItem({
     required this.project,
+    required this.getTechnology,
     super.key,
   });
 
   final Project project;
+  final Function(TechnologyEnum) getTechnology;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +69,7 @@ class ProjectItem extends StatelessWidget {
           child: Flex(
             direction: Axis.horizontal,
             children: [
-              Flexible(child: project.cover),
+              Flexible(child: project.projectEnum.cover),
               Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -117,10 +106,10 @@ class ProjectItem extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: GestureDetector(
-                                      onTap: () => openStringUri(e.url),
+                                      onTap: () => openStringUri(getTechnology(e).url),
                                       child: Tooltip(
                                         message: e.name,
-                                        child: e.cover,
+                                        child: getTechnology(e).technologyEnum.cover,
                                       ),
                                     ),
                                   ),

@@ -57,13 +57,3 @@ Future<bool> sendEmail({
   );
   return openUri(emailUri);
 }
-
-String experience(Duration d) {
-  int daysInyear = 365;
-  int days = d.inDays;
-
-  if (days < daysInyear) return '$days days experience';
-
-  int years = (days / daysInyear).round();
-  return "$years years experience";
-}

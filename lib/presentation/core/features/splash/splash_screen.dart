@@ -1,4 +1,4 @@
-import 'package:bruce_omukoko_portfolio/theme/theme.dart';
+import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -24,9 +24,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: splashNotifier,
-      builder: (_, showing, __) {
+    return AnimatedBuilder(
+      animation: splashNotifier,
+      builder: (_, __) {
+        bool showing = splashNotifier.value;
         return Visibility(
           visible: showing,
           maintainSemantics: false,
