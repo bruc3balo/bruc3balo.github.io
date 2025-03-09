@@ -214,7 +214,7 @@ class PsstPressHere extends StatelessWidget {
           "Psst press here",
           style: GoogleFonts.lovedByTheKing(
             color: Colors.white,
-            fontSize: isMobileView ? 34 : 64,
+            fontSize: isMobileView ? 24 : 64,
           ),
           textAlign: TextAlign.center,
         ),
