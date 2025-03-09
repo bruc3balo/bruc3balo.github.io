@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:bruce_omukoko_portfolio/data/data.dart';
 import 'package:bruce_omukoko_portfolio/presentation/core/features/about_me/view/about_me_screen.dart';
-import 'package:bruce_omukoko_portfolio/pages/contact_me.dart';
+import 'package:bruce_omukoko_portfolio/presentation/core/features/contact_me/contact_me.dart';
 import 'package:bruce_omukoko_portfolio/presentation/core/features/home/models/home_models.dart';
 import 'package:bruce_omukoko_portfolio/presentation/core/features/home/view_model/home_view_model.dart';
 import 'package:bruce_omukoko_portfolio/presentation/core/features/publications/view/publications_screen.dart';

@@ -6,6 +6,7 @@ import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
 
 // import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart' hide Image;
 import 'dart:math';
@@ -21,21 +22,27 @@ class PublicationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            "Publications",
-            style: GoogleFonts.inter(
-              fontWeight: FontWeight.w600,
-              fontSize: 60,
-              color: orange,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 200.0, top: 180),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              "Publications",
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w600,
+                fontSize: 60,
+                color: orange,
+              ),
             ),
           ),
-        ),
-        RivePublications(riveArts: publicationsViewModel.allRiveArts),
-      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            child: RivePublications(riveArts: publicationsViewModel.allRiveArts),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -52,27 +59,6 @@ class RivePublications extends StatelessWidget {
   Widget build(BuildContext context) {
     return RivePublicationItemMenu(
       rives: riveArts,
-    );
-  }
-}
-
-class RivePublicationCircularItem extends StatelessWidget {
-  const RivePublicationCircularItem({
-    required this.r,
-    this.width = 300,
-    super.key,
-  });
-
-  final RiveArt r;
-  final double width;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      child: RiveAnimation.asset(
-        r.asset,
-      ),
     );
   }
 }
@@ -126,7 +112,22 @@ class _RivePublicationItemMenuState extends State<RivePublicationItemMenu> with 
     controller.reverse();
   }
 
-  List<RiveArt> get rives => widget.rives;
+  Future<Map<RiveArt, RiveFile>> _loadRiveFiles() async {
+    // Load all files concurrently using Future.wait
+    final results = await Future.wait(
+      widget.rives.map((art) async {
+          final data = await rootBundle.load(art.asset);
+          final file = RiveFile.import(data);
+          return MapEntry(art, file);
+        },
+      ),
+    );
+
+    // Convert the list of MapEntry to LinkedHashMap to maintain order
+    return Map.fromEntries(results);
+  }
+
+  // List<RiveArt> get rives => widget.rives;
 
   Widget buildButton({
     required double angle,
@@ -184,7 +185,7 @@ class _RivePublicationItemMenuState extends State<RivePublicationItemMenu> with 
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (_, size) {
-        widthFactor = size.maxWidth > 700 ? 5.5 : 3.0;
+        widthFactor = size.maxWidth > 700 ? 8.5 : 5.0;
 
         double diameter = (size.maxWidth / widthFactor);
         double radius = (diameter / 2);
@@ -216,9 +217,9 @@ class _RivePublicationItemMenuState extends State<RivePublicationItemMenu> with 
                         child: Stack(
                           alignment: Alignment.center,
                           children: [
-                            ...rives.sublist(1).asMap().entries.map(
+                            ...widget.rives.sublist(1).asMap().entries.map(
                               (r) {
-                                double angle = r.key * (360 / rives.sublist(1).length);
+                                double angle = r.key * (360 / widget.rives.sublist(1).length);
                                 return buildButton(
                                   angle: angle,
                                   translation: translation,
@@ -247,7 +248,7 @@ class _RivePublicationItemMenuState extends State<RivePublicationItemMenu> with 
                                             child: RotatedBox(
                                               quarterTurns: isOpen ? 2 : 0,
                                               child: RivePublicationCircularItem(
-                                                r: rives[0],
+                                                r: widget.rives[0],
                                                 width: isOpen ? radius : diameter + 100,
                                               ),
                                             ),
@@ -270,6 +271,27 @@ class _RivePublicationItemMenuState extends State<RivePublicationItemMenu> with 
           },
         );
       },
+    );
+  }
+}
+
+class RivePublicationCircularItem extends StatelessWidget {
+  const RivePublicationCircularItem({
+    required this.r,
+    this.width = 300,
+    super.key,
+  });
+
+  final RiveArt r;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width,
+      child: RiveAnimation.asset(
+        r.asset,
+      ),
     );
   }
 }

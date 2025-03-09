@@ -5,6 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+const aboutMeSynopsis =
+    "Software developer, chilling out in Nairobi who's always up for a good problem solving challenge one line of code at a time.";
+const whatIDoSynopsis = "When I’m not deep in thought, you can find me gaming, getting rough and tumble on the rugby field, or just hanging out with friends. Life’s too short not to enjoy a good game and some great company. So yeah, that’s me, always looking for the next challenge and bringing creative flair to everything I do.";
+const flashAsset = "bruc3balo/assets/flash.svg";
+const smileAsset = "bruc3balo/assets/smile.svg";
+const bruceAsset = "bruc3balo/assets/brucy.png";
+const signAsset = "bruc3balo/assets/sign.svg";
+const mouseAsset = "bruc3balo/assets/mouse.svg";
+const littleMoreAboutMe = "A little more about me";
+
 class AboutMePage extends StatelessWidget {
   const AboutMePage({
     required this.goToBackendResume,
@@ -73,7 +83,7 @@ class AboutMeDesktop extends StatelessWidget {
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: SvgPicture.asset("bruc3balo/assets/flash.svg"),
+                      child: SvgPicture.asset(flashAsset),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 40.0),
@@ -111,13 +121,13 @@ class AboutMeDesktop extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 30.0),
                       child: Align(
                         alignment: Alignment.center,
-                        child: SvgPicture.asset("bruc3balo/assets/sign.svg"),
+                        child: SvgPicture.asset(signAsset),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(30.0),
                       child: Text(
-                        "Software developer, chilling out in Nairobi and always up for a good problem solving challenge one code at a time.",
+                        aboutMeSynopsis,
                         style: GoogleFonts.inter(
                           fontSize: 24,
                           color: Colors.white,
@@ -128,7 +138,7 @@ class AboutMeDesktop extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 30.0),
                       child: Align(
                         alignment: Alignment.center,
-                        child: SvgPicture.asset("bruc3balo/assets/smile.svg"),
+                        child: SvgPicture.asset(smileAsset),
                       ),
                     ),
                     Padding(
@@ -242,7 +252,7 @@ class AboutMeDesktop extends StatelessWidget {
                                     Padding(
                                       padding: const EdgeInsets.all(10.0),
                                       child: SvgPicture.asset(
-                                        "bruc3balo/assets/mouse.svg",
+                                        mouseAsset,
                                         color: hovering ? orange : Colors.white,
                                       ),
                                     ),
@@ -268,9 +278,7 @@ class AboutMeDesktop extends StatelessWidget {
             Flexible(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Image.asset(
-                  "bruc3balo/assets/brucy.png",
-                ),
+                child: Image.asset(bruceAsset),
               ),
             ),
           ],
@@ -291,7 +299,7 @@ class AboutMeDesktop extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "A little more about me",
+                      littleMoreAboutMe,
                       key: moreKey,
                       style: GoogleFonts.inter(
                         fontWeight: FontWeight.bold,
@@ -301,7 +309,7 @@ class AboutMeDesktop extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     Text(
-                      "When I’m not deep in thought, you can find me gaming , getting rough and tumble on the  rugby field, or just hanging out with friends. Life’s too short not to enjoy a good game and some great company. So yeah, that’s me, always looking for the next challenge and bringing creative flair to everything I do.",
+                      whatIDoSynopsis,
                       style: GoogleFonts.inter(
                         fontSize: 24,
                         color: Colors.white,
@@ -483,7 +491,7 @@ class AboutMeMobile extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.centerLeft,
-                child: SvgPicture.asset("bruc3balo/assets/flash.svg"),
+                child: SvgPicture.asset(flashAsset),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 40.0),
@@ -521,13 +529,13 @@ class AboutMeMobile extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 30.0),
                 child: Align(
                   alignment: Alignment.center,
-                  child: SvgPicture.asset("bruc3balo/assets/sign.svg"),
+                  child: SvgPicture.asset(signAsset),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: Text(
-                  "Software developer, chilling out in Nairobi and always up for a good problem solving challenge one code at a time.",
+                  aboutMeSynopsis,
                   style: GoogleFonts.inter(
                     fontSize: 24,
                     color: Colors.white,
@@ -538,14 +546,12 @@ class AboutMeMobile extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 30.0),
                 child: Align(
                   alignment: Alignment.center,
-                  child: SvgPicture.asset("bruc3balo/assets/smile.svg"),
+                  child: SvgPicture.asset(smileAsset),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Image.asset(
-                  "bruc3balo/assets/brucy.png",
-                ),
+                child: Image.asset(bruceAsset),
               ),
               Padding(
                 padding: const EdgeInsets.all(30.0),
@@ -665,7 +671,7 @@ class AboutMeMobile extends StatelessWidget {
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: SvgPicture.asset(
-                                  "bruc3balo/assets/mouse.svg",
+                                  mouseAsset,
                                   color: hovering ? orange : Colors.white,
                                 ),
                               ),
@@ -694,7 +700,7 @@ class AboutMeMobile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "A little more about me",
+                littleMoreAboutMe,
                 key: moreKey,
                 style: GoogleFonts.inter(
                   fontWeight: FontWeight.bold,
@@ -704,7 +710,7 @@ class AboutMeMobile extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               Text(
-                "When I’m not deep in thought, you can find me gaming , getting rough and tumble on the  rugby field, or just hanging out with friends. Life’s too short not to enjoy a good game and some great company. So yeah, that’s me, always looking for the next challenge and bringing creative flair to everything I do.",
+                whatIDoSynopsis,
                 style: GoogleFonts.inter(
                   fontSize: 24,
                   color: Colors.white,

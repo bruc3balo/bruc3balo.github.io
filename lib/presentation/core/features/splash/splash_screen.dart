@@ -1,3 +1,4 @@
+import 'package:bruce_omukoko_portfolio/presentation/core/ui/reusable_widgets.dart';
 import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -39,12 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
             cursor: SystemMouseCursors.click,
             child: Scaffold(
               backgroundColor: darkBackground,
-              body: Center(
-                child: LoadingAnimationWidget.beat(
-                  color: orange,
-                  size: 200,
-                ),
-              ),
+              body: const InfiniteLoader(),
             ),
           ),
         );
@@ -52,3 +48,4 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+

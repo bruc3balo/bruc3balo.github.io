@@ -136,12 +136,14 @@ class PubDevPackage {
 
 class RiveArt {
   final String name;
+  final RiveArtEnum riveArtEnum;
   final String description;
   final String animation;
   final String asset;
 
   const RiveArt({
     required this.name,
+    required this.riveArtEnum,
     required this.description,
     required this.animation,
     required this.asset,

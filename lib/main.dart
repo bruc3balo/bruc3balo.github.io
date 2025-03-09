@@ -16,6 +16,7 @@ Future<void> main() async {
   usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
 
+
   SkillRepository skillRepository = SkillRepositoryImpl();
   GetIt.I.registerSingleton(skillRepository);
 
