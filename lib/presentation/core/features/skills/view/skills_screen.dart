@@ -135,8 +135,7 @@ class _SkillsPageState extends State<SkillsPage> {
             ),
             children: widget.skillsViewModel.allSkills
                 .expand(
-                  (s) => s.technologies
-                      .map(
+                  (s) => s.technologies.map(
                         (t) => OnHover(
                           builder: (hovering) {
                             return Flex(
@@ -174,7 +173,7 @@ class _SkillsPageState extends State<SkillsPage> {
                                   ),
                                 ),
                                 Text(
-                                  t.name,
+                                  widget.skillsViewModel.getTechnology(t).name,
                                   style: GoogleFonts.aBeeZee(),
                                   textAlign: TextAlign.center,
                                 ),
@@ -187,8 +186,7 @@ class _SkillsPageState extends State<SkillsPage> {
                             );
                           },
                         ),
-                      )
-                      .toList(),
+                      ).toList(),
                 )
                 .toList(),
           ),

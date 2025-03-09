@@ -14,6 +14,8 @@ class HomeViewModel extends ChangeNotifier {
   HomeSection get currentSection => _currentSection;
 
   void setCurrentSection(HomeSection section) {
+    if(_currentSection == section) return;
+
     _currentSection = section;
     notifyListeners();
   }
