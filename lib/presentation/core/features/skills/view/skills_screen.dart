@@ -66,7 +66,7 @@ class _SkillsPageState extends State<SkillsPage> {
           child: SizedBox(
             height: 500,
             child: Stack(
-              alignment: Alignment.center,
+              alignment: Alignment.topRight,
               children: [
                 Align(
                   alignment: Alignment.center,
@@ -114,7 +114,7 @@ class _SkillsPageState extends State<SkillsPage> {
                 Positioned(
                   right: 0,
                   left: widget.isMobileView ? 270 : 350,
-                  bottom: widget.isMobileView ? 200 : 250,
+                  bottom: 250,
                   child: PsstPressHere(
                     isMobileView: widget.isMobileView,
                   ),

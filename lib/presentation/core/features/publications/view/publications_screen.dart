@@ -41,7 +41,10 @@ class PublicationsPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0),
-            child: RivePublications(riveArts: publicationsViewModel.allRiveArts),
+            child: RivePublications(
+              riveArts: publicationsViewModel.allRiveArts,
+              isMobileView: isMobileView,
+            ),
           ),
         ],
       ),
@@ -52,23 +55,31 @@ class PublicationsPage extends StatelessWidget {
 class RivePublications extends StatelessWidget {
   const RivePublications({
     required this.riveArts,
+    required this.isMobileView,
     super.key,
   });
 
   final List<RiveArt> riveArts;
+  final bool isMobileView;
 
   @override
   Widget build(BuildContext context) {
     return RivePublicationItemMenu(
+      isMobileView: isMobileView,
       rives: riveArts,
     );
   }
 }
 
 class RivePublicationItemMenu extends StatefulWidget {
-  const RivePublicationItemMenu({required this.rives, super.key});
+  const RivePublicationItemMenu({
+    required this.rives,
+    required this.isMobileView,
+    super.key,
+  });
 
   final List<RiveArt> rives;
+  final bool isMobileView;
 
   @override
   State<RivePublicationItemMenu> createState() => _RivePublicationItemMenuState();
@@ -188,7 +199,7 @@ class _RivePublicationItemMenuState extends State<RivePublicationItemMenu> with 
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (_, size) {
-        widthFactor = size.maxWidth > 700 ? 8.5 : 5.0;
+        widthFactor = (size.maxWidth / 100) - 2.0;
 
         double diameter = (size.maxWidth / widthFactor);
         double radius = (diameter / 2);
