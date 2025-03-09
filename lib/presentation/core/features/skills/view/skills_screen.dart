@@ -136,13 +136,14 @@ class _SkillsPageState extends State<SkillsPage> {
             children: widget.skillsViewModel.allSkills
                 .expand(
                   (s) => s.technologies.map(
-                        (t) => OnHover(
-                          builder: (hovering) {
-                            return Flex(
-                              direction: Axis.vertical,
-                              children: [
-                                Expanded(
-                                  child: GestureDetector(
+                        (t) => Flex(
+                          direction: Axis.vertical,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Expanded(
+                              child: OnHover(
+                                  builder: (hovering) {
+                                  return GestureDetector(
                                     onTap: () => showTechnologyInfo(
                                       context: context,
                                       skillBoard: s,
@@ -170,21 +171,21 @@ class _SkillsPageState extends State<SkillsPage> {
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ),
-                                Text(
-                                  widget.skillsViewModel.getTechnology(t).name,
-                                  style: GoogleFonts.aBeeZee(),
-                                  textAlign: TextAlign.center,
-                                ),
-                                Text(
-                                  widget.skillsViewModel.getTechnology(t).xp,
-                                  style: GoogleFonts.aBeeZee(),
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            );
-                          },
+                                  );
+                                }
+                              ),
+                            ),
+                            Text(
+                              widget.skillsViewModel.getTechnology(t).name,
+                              style: GoogleFonts.aBeeZee(),
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(
+                              widget.skillsViewModel.getTechnology(t).xp,
+                              style: GoogleFonts.aBeeZee(),
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
                         ),
                       ).toList(),
                 )

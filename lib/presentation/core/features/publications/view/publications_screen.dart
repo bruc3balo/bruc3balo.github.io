@@ -15,15 +15,17 @@ import 'package:vector_math/vector_math.dart' show radians;
 class PublicationsPage extends StatelessWidget {
   const PublicationsPage({
     required this.publicationsViewModel,
+    required this.isMobileView,
     super.key,
   });
 
   final PublicationsViewModel publicationsViewModel;
+  final bool isMobileView;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 200.0, top: 180),
+      padding: EdgeInsets.only(bottom: isMobileView ? 100 : 200.0, top: isMobileView ? 90 : 180),
       child: Column(
         children: [
           Padding(
@@ -32,7 +34,7 @@ class PublicationsPage extends StatelessWidget {
               "Publications",
               style: GoogleFonts.inter(
                 fontWeight: FontWeight.w600,
-                fontSize: 60,
+                fontSize: isMobileView ? 40 : 60,
                 color: orange,
               ),
             ),
@@ -115,7 +117,8 @@ class _RivePublicationItemMenuState extends State<RivePublicationItemMenu> with 
   Future<Map<RiveArt, RiveFile>> _loadRiveFiles() async {
     // Load all files concurrently using Future.wait
     final results = await Future.wait(
-      widget.rives.map((art) async {
+      widget.rives.map(
+        (art) async {
           final data = await rootBundle.load(art.asset);
           final file = RiveFile.import(data);
           return MapEntry(art, file);

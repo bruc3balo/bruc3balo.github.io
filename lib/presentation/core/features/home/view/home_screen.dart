@@ -184,6 +184,7 @@ class _HomePageState extends State<HomePage> {
                             skillsViewModel: widget.skillsViewModel,
                           ),
                         HomeSection.publications => PublicationsPage(
+                            isMobileView: isMobileView,
                             publicationsViewModel: widget.publicationsViewModel,
                           ),
                         // HomeSection.projects => const ProjectsPage(),
