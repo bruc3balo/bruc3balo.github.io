@@ -19,17 +19,13 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: '3.47.7'
 
       - name: Enable web
         run: flutter config --enable-web
 
       - name: Get dependencies
         run: flutter pub get
-
-      - name: Copy assets
-        run: |
-          mkdir -p build/web/assets
-          cp -r bruc3balo/assets/* build/web/assets/
 
       - name: Build
         run: flutter build web --wasm --base-href "/"

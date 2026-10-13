@@ -2,7 +2,6 @@ import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
 import 'package:bruce_omukoko_portfolio/presentation/utils/functions.dart';
 import 'package:bruce_omukoko_portfolio/presentation/core/ui/reusable_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ContactMePage extends StatelessWidget {
   const ContactMePage({super.key});
@@ -19,7 +18,7 @@ class ContactMePage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               "Contact Me",
-              style: GoogleFonts.inter(
+              style: TextStyle(fontFamily: 'Inter',
                 fontWeight: FontWeight.w600,
                 fontSize: 60,
                 color: orange,
@@ -69,7 +68,7 @@ class ContactMePage extends StatelessWidget {
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
                               "Subject",
-                              style: GoogleFonts.inter(
+                              style: TextStyle(fontFamily: 'Inter',
                                 fontWeight: FontWeight.w600,
                                 fontSize: 20,
                                 color: Colors.white,

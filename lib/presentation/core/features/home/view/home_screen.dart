@@ -13,7 +13,6 @@ import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
 import 'package:bruce_omukoko_portfolio/presentation/utils/functions.dart';
 import 'package:bruce_omukoko_portfolio/presentation/core/ui/reusable_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 final ScrollController scrollController = ScrollController();
@@ -69,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           TextSpan(
                             text: "Bruce",
-                            style: GoogleFonts.inter(
+                            style: TextStyle(fontFamily: 'Inter',
                               fontWeight: FontWeight.bold,
                               fontSize: 30,
                               color: orange,
@@ -77,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           TextSpan(
                             text: " Omukoko",
-                            style: GoogleFonts.inter(
+                            style: TextStyle(fontFamily: 'Inter',
                               fontWeight: FontWeight.bold,
                               fontSize: 30,
                               color: Colors.white,
@@ -118,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                                             e.value,
                                             minFontSize: 8,
                                             maxFontSize: 16,
-                                            style: GoogleFonts.inter(
+                                            style: TextStyle(fontFamily: 'Inter',
                                               color: hovering ? orange : Colors.white,
                                               fontWeight: visible ? FontWeight.bold : FontWeight.w400,
                                               // fontSize: 24,

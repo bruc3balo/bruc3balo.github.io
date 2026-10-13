@@ -7,7 +7,6 @@ import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
 // import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rive/rive.dart' hide Image;
 import 'dart:math';
 import 'package:vector_math/vector_math.dart' show radians;
@@ -32,7 +31,7 @@ class PublicationsPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               "Publications",
-              style: GoogleFonts.inter(
+              style: TextStyle(fontFamily: 'Inter',
                 fontWeight: FontWeight.w600,
                 fontSize: isMobileView ? 40 : 60,
                 color: orange,
@@ -123,22 +122,6 @@ class _RivePublicationItemMenuState extends State<RivePublicationItemMenu> with 
   void close() {
     openNotifier.value = false;
     controller.reverse();
-  }
-
-  Future<Map<RiveArt, RiveFile>> _loadRiveFiles() async {
-    // Load all files concurrently using Future.wait
-    final results = await Future.wait(
-      widget.rives.map(
-        (art) async {
-          final data = await rootBundle.load(art.asset);
-          final file = RiveFile.import(data);
-          return MapEntry(art, file);
-        },
-      ),
-    );
-
-    // Convert the list of MapEntry to LinkedHashMap to maintain order
-    return Map.fromEntries(results);
   }
 
   // List<RiveArt> get rives => widget.rives;
