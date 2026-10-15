@@ -26,6 +26,7 @@ class SkillRepositoryImpl extends SkillRepository {
           TechnologyEnum.dockerTechnology,
           TechnologyEnum.kubernetesTechnology,
           TechnologyEnum.gitTechnology,
+          TechnologyEnum.ciCdTechnology,
         ],
       );
 

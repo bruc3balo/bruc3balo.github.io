@@ -173,6 +173,44 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
     ],
   );
 
+  final Technologies _ciCdTechnology = Technologies(
+    name: 'CI/CD',
+    brief:
+    "I build pipelines in GitHub Actions, GitLab CI and Jenkins that test, build and deploy every change automatically.",
+    startDate: DateTime(2022, DateTime.august),
+    technologyEnum: TechnologyEnum.ciCdTechnology,
+    url: 'https://github.com/features/actions',
+    abilities: const [
+      Ability(
+        name: 'Pipelines',
+        brief:
+        "Write pipelines as code that run on every push and pull request.",
+        points: [
+          "Built workflows in GitHub Actions, GitLab CI and Jenkins.",
+          "Cached dependencies and Docker layers to keep builds fast.",
+        ],
+      ),
+      Ability(
+        name: 'Automated Testing',
+        brief:
+        "Run tests and checks automatically so broken code never reaches the main branch.",
+        points: [
+          "Ran unit and integration tests on every pull request.",
+          "Blocked merges until builds, tests and linters pass.",
+        ],
+      ),
+      Ability(
+        name: 'Deployments',
+        brief:
+        "Ship to production straight from the pipeline, with no manual steps.",
+        points: [
+          "Built and pushed Docker images, then rolled them out to Kubernetes.",
+          "Kept separate staging and production environments with approval gates.",
+        ],
+      ),
+    ],
+  );
+
   final Technologies _nativeAndroidTechnology = Technologies(
     name: 'Native Android',
     brief:
@@ -461,6 +499,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
      TechnologyEnum.dockerTechnology => _dockerTechnology,
      TechnologyEnum.kubernetesTechnology => _kubernetesTechnology,
      TechnologyEnum.gitTechnology => _gitTechnology,
+     TechnologyEnum.ciCdTechnology => _ciCdTechnology,
      TechnologyEnum.nativeAndroidTechnology => _nativeAndroidTechnology,
      TechnologyEnum.flutterTechnology => _flutterTechnology,
      TechnologyEnum.riveTechnology => _riveTechnology,

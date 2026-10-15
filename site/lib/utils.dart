@@ -17,6 +17,7 @@ String isoDate(DateTime d) =>
   TechnologyEnum.dockerTechnology => (src: '/assets/docker.svg', tint: null),
   TechnologyEnum.kubernetesTechnology => (src: '/assets/kubernets.svg', tint: null),
   TechnologyEnum.gitTechnology => (src: '/assets/git.svg', tint: null),
+  TechnologyEnum.ciCdTechnology => (src: '/assets/github-actions.svg', tint: '#2088FF'),
   TechnologyEnum.nativeAndroidTechnology => (src: '/assets/android.svg', tint: '#4CAF50'),
   TechnologyEnum.flutterTechnology => (src: '/assets/flutter.svg', tint: null),
   TechnologyEnum.riveTechnology => (src: '/assets/rive.webp', tint: null),
