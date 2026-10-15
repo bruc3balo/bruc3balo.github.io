@@ -400,12 +400,12 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
         "Design MySQL schemas and tune slow queries with EXPLAIN and the right indexes.",
       ),
       Ability(
-        name: 'Data Backup and Recovery',
+        name: 'Backup and Recovery',
         brief:
-        "Ensured data durability with robust backup and recovery mechanisms.",
+        "Make sure data can always be brought back.",
         points: [
-          "Automated database backups for regular snapshots.",
-          "Restored critical data efficiently during outages or failures.",
+          "Scheduled automatic backups and tested that they restore.",
+          "Restored production data after outages.",
         ],
       ),
     ],
