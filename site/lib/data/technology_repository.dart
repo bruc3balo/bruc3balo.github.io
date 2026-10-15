@@ -101,6 +101,11 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
     startDate: DateTime(2024, DateTime.february),
     abilities: const [
       Ability(
+        name: 'Certifications',
+        brief:
+        "Certified Kubernetes and Cloud Native Associate (KCNA), and currently preparing for the Certified Kubernetes Application Developer (CKAD) exam.",
+      ),
+      Ability(
         name: 'Deployment and Scaling',
         brief:
         "Roll out services with zero-downtime updates and scale them automatically as traffic changes.",
