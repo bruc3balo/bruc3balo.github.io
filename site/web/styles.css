@@ -255,9 +255,10 @@ details[open] .points { animation: rise .3s var(--ease-out); }
   /* Face size; the open ring is 3.8 faces wide, so it is capped to fit narrow screens. */
   --size: min(clamp(90px, 14vw, 170px), calc((100vw - 40px) / 3.8));
   --radius: calc(var(--size) * 1.35);
+  --menu-ease: cubic-bezier(.4, 0, .2, 1);
   position: relative;
   height: calc(var(--size) * 1.5);
-  transition: height .6s var(--ease-out);
+  transition: height .8s var(--menu-ease);
 }
 .rive-menu.open { height: calc(var(--size) * 3.9); }
 .rive-menu canvas { width: 100%; height: 100%; display: block; border-radius: 50%; }
@@ -277,13 +278,16 @@ details[open] .points { animation: rise .3s var(--ease-out); }
   background: var(--text);
   cursor: pointer;
   overflow: hidden;
-  box-shadow: 0 0 0 0 rgba(76, 175, 80, .5);
+  --glow: 76, 175, 80;
+  box-shadow: 0 0 0 0 rgba(var(--glow), .5);
+  /* The breathing and glow keep running when the menu is open (as in the Flutter version), so nothing snaps when
+     they would otherwise stop and restart. */
   animation: breathe 2s ease-in-out infinite, glow 2s ease-out infinite;
-  transition: border-color .3s, transform .7s var(--ease-spring);
+  transition: border-color .5s, transform .8s var(--menu-ease);
 }
 .rive-centre:hover { animation-play-state: paused; }
-.rive-centre canvas { transition: transform .7s var(--ease-out); }
-.rive-menu.open .rive-centre { border-color: #F44336; transform: scale(.6); animation: none; }
+.rive-centre canvas { transition: transform .8s var(--menu-ease); }
+.rive-menu.open .rive-centre { --glow: 244, 67, 54; border-color: #F44336; transform: scale(.6); }
 .rive-menu.open .rive-centre canvas { transform: rotate(180deg); }
 /* Faces spiral out from behind the badge: the angle runs from a full turn back to its slot while the radius grows,
    and the trailing rotate keeps each face upright. */
@@ -291,13 +295,16 @@ details[open] .points { animation: rise .3s var(--ease-out); }
   --angle: calc(360deg / var(--count) * var(--i));
   opacity: 0;
   transform: rotate(calc(var(--angle) - 360deg)) translateX(0) rotate(calc(360deg - var(--angle))) scale(.3);
-  transition: transform .9s var(--ease-out), opacity .4s;
-  transition-delay: calc(var(--i) * 40ms);
+  /* Closing: faces fold back in reverse order and fade as they reach the badge. */
+  transition: transform .8s var(--menu-ease), opacity .5s;
+  transition-delay: calc((var(--count) - 1 - var(--i)) * 30ms), calc(.3s + (var(--count) - 1 - var(--i)) * 30ms);
   pointer-events: none;
 }
 .rive-menu.open .rive-item {
   opacity: 1;
   transform: rotate(var(--angle)) translateX(var(--radius)) rotate(calc(-1 * var(--angle))) scale(1);
+  transition: transform .9s var(--menu-ease), opacity .4s;
+  transition-delay: calc(var(--i) * 40ms);
   pointer-events: auto;
 }
 .rive-item::after {
@@ -322,7 +329,7 @@ details[open] .points { animation: rise .3s var(--ease-out); }
 .rive-hint { margin: 16px 0 0; font-size: 28px; opacity: .8; transition: opacity .4s; }
 .rive-menu.open + .rive-hint { opacity: 0; }
 @keyframes breathe { 50% { scale: 1.1; } }
-@keyframes glow { 70%, 100% { box-shadow: 0 0 0 18px rgba(76, 175, 80, 0); } }
+@keyframes glow { 70%, 100% { box-shadow: 0 0 0 18px rgba(var(--glow), 0); } }
 
 /* Contact */
 .contact { display: flex; flex-direction: column; align-items: center; gap: 8px; padding-bottom: 60px !important; }
@@ -338,6 +345,8 @@ details[open] .points { animation: rise .3s var(--ease-out); }
   .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
   .js .reveal.in { opacity: 1; transform: none; }
   .js .tech-tile.reveal { transition-delay: calc(var(--d, 0) * 60ms); }
+  /* Keep the menu's height transition, which the generic reveal transition above would otherwise replace. */
+  .js .rive-menu.reveal { transition: opacity .7s var(--ease-out), transform .7s var(--ease-out), height .8s var(--menu-ease); }
 }
 
 /* Playground. Without playground.js (or with reduced motion) the technologies simply wrap in a grid. */
