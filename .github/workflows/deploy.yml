@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main, speed-improvements ]
   workflow_dispatch:
 
 permissions:
@@ -19,17 +21,13 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: '3.47.7'
 
       - name: Enable web
         run: flutter config --enable-web
 
       - name: Get dependencies
         run: flutter pub get
-
-      - name: Copy assets
-        run: |
-          mkdir -p build/web/assets
-          cp -r bruc3balo/assets/* build/web/assets/
 
       - name: Build
         run: flutter build web --wasm --base-href "/"
@@ -42,6 +40,7 @@ jobs:
         run: echo "bruc3balo.github.io" > build/web/CNAME
 
       - name: Deploy
+        if: github.event_name != 'pull_request'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

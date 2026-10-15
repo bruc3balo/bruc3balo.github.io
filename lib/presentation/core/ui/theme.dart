@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class ColorPack {
@@ -47,7 +46,7 @@ ThemeData darkTheme = ThemeData(
   appBarTheme: AppBarTheme(
     // elevation: 12.0,
     backgroundColor: Colors.transparent,
-    titleTextStyle: GoogleFonts.robotoMono(
+    titleTextStyle: TextStyle(fontFamily: 'RobotoMono',
       color: darkColor.titleColor,
       fontWeight: FontWeight.bold,
       decorationThickness: 20,
@@ -66,7 +65,7 @@ ThemeData darkTheme = ThemeData(
         ),
       ),
       textStyle: WidgetStatePropertyAll(
-        GoogleFonts.robotoMono(
+        TextStyle(fontFamily: 'RobotoMono',
           color: darkColor.tileColor,
           fontWeight: FontWeight.w700,
           letterSpacing: 2.0,
@@ -79,7 +78,7 @@ ThemeData darkTheme = ThemeData(
     ),
   ),
   textTheme: TextTheme(
-    titleLarge: GoogleFonts.poppins(
+    titleLarge: TextStyle(fontFamily: 'Poppins',
       fontSize: 24,
       fontWeight: FontWeight.bold,
       decorationThickness: 35,
@@ -104,20 +103,20 @@ ThemeData darkTheme = ThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     contentPadding: const EdgeInsets.all(10.0),
     tileColor: darkColor.background,
-    titleTextStyle: GoogleFonts.robotoMono(
+    titleTextStyle: TextStyle(fontFamily: 'RobotoMono',
       color: darkColor.secondary,
       fontWeight: FontWeight.w600,
       fontSize: 18,
       wordSpacing: 3.0,
       letterSpacing: 2.0,
     ),
-    subtitleTextStyle: GoogleFonts.robotoMono(
+    subtitleTextStyle: TextStyle(fontFamily: 'RobotoMono',
       color: darkColor.secondary,
       fontWeight: FontWeight.normal,
       fontSize: 14,
     ),
   ),
-  cardTheme: CardTheme(
+  cardTheme: CardThemeData(
     color: darkColor.background,
     surfaceTintColor: darkBackground,
     shadowColor: darkBackground,

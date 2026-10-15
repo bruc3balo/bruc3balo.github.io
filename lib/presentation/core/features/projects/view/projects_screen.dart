@@ -4,7 +4,6 @@ import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
 import 'package:bruce_omukoko_portfolio/presentation/utils/extensions.dart';
 import 'package:bruce_omukoko_portfolio/presentation/utils/functions.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({
@@ -23,7 +22,7 @@ class ProjectsPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             "Projects",
-            style: GoogleFonts.inter(
+            style: TextStyle(fontFamily: 'Inter',
               fontWeight: FontWeight.w600,
               fontSize: 60,
               color: orange,

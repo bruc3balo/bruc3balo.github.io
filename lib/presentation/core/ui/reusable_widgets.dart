@@ -99,7 +99,7 @@ class OnHover extends StatelessWidget {
 }
 
 Image get background => Image.asset(
-  "bruc3balo/assets/background.png",
+  "bruc3balo/assets/background.webp",
   fit: BoxFit.fill,
   width: double.infinity,
   height: double.infinity,

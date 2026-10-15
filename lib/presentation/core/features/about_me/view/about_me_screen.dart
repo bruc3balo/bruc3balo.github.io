@@ -3,14 +3,13 @@ import 'package:bruce_omukoko_portfolio/presentation/core/ui/reusable_widgets.da
 import 'package:bruce_omukoko_portfolio/presentation/core/ui/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 const aboutMeSynopsis =
     "Software developer, chilling out in Nairobi who's always up for a good problem solving challenge one line of code at a time.";
 const whatIDoSynopsis = "When I’m not deep in thought, you can find me gaming, getting rough and tumble on the rugby field, or just hanging out with friends. Life’s too short not to enjoy a good game and some great company. So yeah, that’s me, always looking for the next challenge and bringing creative flair to everything I do.";
 const flashAsset = "bruc3balo/assets/flash.svg";
 const smileAsset = "bruc3balo/assets/smile.svg";
-const bruceAsset = "bruc3balo/assets/brucy.png";
+const bruceAsset = "bruc3balo/assets/brucy.webp";
 const signAsset = "bruc3balo/assets/sign.svg";
 const mouseAsset = "bruc3balo/assets/mouse.svg";
 const littleMoreAboutMe = "A little more about me";
@@ -92,14 +91,14 @@ class AboutMeDesktop extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: "Hey There, I'm ",
-                              style: GoogleFonts.inter(
+                              style: TextStyle(fontFamily: 'Inter',
                                 fontSize: 50,
                                 color: Colors.white,
                               ),
                             ),
                             TextSpan(
                               text: "Bruce",
-                              style: GoogleFonts.inter(
+                              style: TextStyle(fontFamily: 'Inter',
                                 fontWeight: FontWeight.bold,
                                 fontSize: 50,
                                 color: orange,
@@ -107,7 +106,7 @@ class AboutMeDesktop extends StatelessWidget {
                             ),
                             TextSpan(
                               text: " Omukoko",
-                              style: GoogleFonts.inter(
+                              style: TextStyle(fontFamily: 'Inter',
                                 fontWeight: FontWeight.bold,
                                 fontSize: 50,
                                 color: Colors.white,
@@ -128,7 +127,7 @@ class AboutMeDesktop extends StatelessWidget {
                       padding: const EdgeInsets.all(30.0),
                       child: Text(
                         aboutMeSynopsis,
-                        style: GoogleFonts.inter(
+                        style: TextStyle(fontFamily: 'Inter',
                           fontSize: 24,
                           color: Colors.white,
                         ),
@@ -181,7 +180,7 @@ class AboutMeDesktop extends StatelessWidget {
                               ),
                               child: Text(
                                 "Let's Work",
-                                style: GoogleFonts.inter(
+                                style: TextStyle(fontFamily: 'Inter',
                                   fontSize: 20,
                                   color: Colors.white,
                                 ),
@@ -220,7 +219,7 @@ class AboutMeDesktop extends StatelessWidget {
                               ),
                               child: Text(
                                 "More",
-                                style: GoogleFonts.inter(
+                                style: TextStyle(fontFamily: 'Inter',
                                   fontSize: 20,
                                   color: Colors.white,
                                 ),
@@ -258,7 +257,7 @@ class AboutMeDesktop extends StatelessWidget {
                                     ),
                                     Text(
                                       "Scroll down",
-                                      style: GoogleFonts.inter(
+                                      style: TextStyle(fontFamily: 'Inter',
                                         fontSize: 20,
                                         color: hovering ? orange : Colors.white,
                                       ),
@@ -301,7 +300,7 @@ class AboutMeDesktop extends StatelessWidget {
                     Text(
                       littleMoreAboutMe,
                       key: moreKey,
-                      style: GoogleFonts.inter(
+                      style: TextStyle(fontFamily: 'Inter',
                         fontWeight: FontWeight.bold,
                         fontSize: 54,
                         color: orange,
@@ -310,7 +309,7 @@ class AboutMeDesktop extends StatelessWidget {
                     ),
                     Text(
                       whatIDoSynopsis,
-                      style: GoogleFonts.inter(
+                      style: TextStyle(fontFamily: 'Inter',
                         fontSize: 24,
                         color: Colors.white,
                       ),
@@ -326,7 +325,7 @@ class AboutMeDesktop extends StatelessWidget {
                           children: [
                             Align(
                               alignment: Alignment.centerLeft,
-                              child: SvgPicture.asset("flash.svg"),
+                              child: SvgPicture.asset(flashAsset),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -372,7 +371,7 @@ class AboutMeDesktop extends StatelessWidget {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         "Backend Resume",
-                                        style: GoogleFonts.inter(
+                                        style: TextStyle(fontFamily: 'Inter',
                                           fontSize: 20,
                                           color: Colors.white,
                                         ),
@@ -433,7 +432,7 @@ class AboutMeDesktop extends StatelessWidget {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
                                         "Flutter Resume",
-                                        style: GoogleFonts.inter(
+                                        style: TextStyle(fontFamily: 'Inter',
                                           fontSize: 20,
                                           color: Colors.white,
                                         ),
@@ -447,7 +446,7 @@ class AboutMeDesktop extends StatelessWidget {
                               alignment: Alignment.centerRight,
                               child: RotatedBox(
                                 quarterTurns: 90,
-                                child: SvgPicture.asset("flash.svg"),
+                                child: SvgPicture.asset(flashAsset),
                               ),
                             ),
                           ],
@@ -500,14 +499,14 @@ class AboutMeMobile extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: "Hey There, I'm ",
-                        style: GoogleFonts.inter(
+                        style: TextStyle(fontFamily: 'Inter',
                           fontSize: 50,
                           color: Colors.white,
                         ),
                       ),
                       TextSpan(
                         text: "Bruce",
-                        style: GoogleFonts.inter(
+                        style: TextStyle(fontFamily: 'Inter',
                           fontWeight: FontWeight.bold,
                           fontSize: 50,
                           color: orange,
@@ -515,7 +514,7 @@ class AboutMeMobile extends StatelessWidget {
                       ),
                       TextSpan(
                         text: " Omukoko",
-                        style: GoogleFonts.inter(
+                        style: TextStyle(fontFamily: 'Inter',
                           fontWeight: FontWeight.bold,
                           fontSize: 50,
                           color: Colors.white,
@@ -536,7 +535,7 @@ class AboutMeMobile extends StatelessWidget {
                 padding: const EdgeInsets.all(30.0),
                 child: Text(
                   aboutMeSynopsis,
-                  style: GoogleFonts.inter(
+                  style: TextStyle(fontFamily: 'Inter',
                     fontSize: 24,
                     color: Colors.white,
                   ),
@@ -595,7 +594,7 @@ class AboutMeMobile extends StatelessWidget {
                           ),
                           child: Text(
                             "Let's Work",
-                            style: GoogleFonts.inter(
+                            style: TextStyle(fontFamily: 'Inter',
                               fontSize: 20,
                               color: Colors.white,
                             ),
@@ -636,7 +635,7 @@ class AboutMeMobile extends StatelessWidget {
                           ),
                           child: Text(
                             "More",
-                            style: GoogleFonts.inter(
+                            style: TextStyle(fontFamily: 'Inter',
                               fontSize: 20,
                               color: Colors.white,
                             ),
@@ -677,7 +676,7 @@ class AboutMeMobile extends StatelessWidget {
                               ),
                               Text(
                                 "Scroll down",
-                                style: GoogleFonts.inter(
+                                style: TextStyle(fontFamily: 'Inter',
                                   fontSize: 20,
                                   color: hovering ? orange : Colors.white,
                                 ),
@@ -702,7 +701,7 @@ class AboutMeMobile extends StatelessWidget {
               Text(
                 littleMoreAboutMe,
                 key: moreKey,
-                style: GoogleFonts.inter(
+                style: TextStyle(fontFamily: 'Inter',
                   fontWeight: FontWeight.bold,
                   fontSize: 54,
                   color: orange,
@@ -711,7 +710,7 @@ class AboutMeMobile extends StatelessWidget {
               ),
               Text(
                 whatIDoSynopsis,
-                style: GoogleFonts.inter(
+                style: TextStyle(fontFamily: 'Inter',
                   fontSize: 24,
                   color: Colors.white,
                 ),
@@ -730,7 +729,7 @@ class AboutMeMobile extends StatelessWidget {
                   children: [
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: SvgPicture.asset("flash.svg"),
+                      child: SvgPicture.asset(flashAsset),
                     ),
                     Align(
                       alignment: Alignment.centerLeft,
@@ -778,7 +777,7 @@ class AboutMeMobile extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   "Backend Resume",
-                                  style: GoogleFonts.inter(
+                                  style: TextStyle(fontFamily: 'Inter',
                                     fontSize: 20,
                                     color: Colors.white,
                                   ),
@@ -842,7 +841,7 @@ class AboutMeMobile extends StatelessWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
                                   "Flutter Resume",
-                                  style: GoogleFonts.inter(
+                                  style: TextStyle(fontFamily: 'Inter',
                                     fontSize: 20,
                                     color: Colors.white,
                                   ),
@@ -857,7 +856,7 @@ class AboutMeMobile extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: RotatedBox(
                         quarterTurns: 90,
-                        child: SvgPicture.asset("flash.svg"),
+                        child: SvgPicture.asset(flashAsset),
                       ),
                     ),
                   ],
@@ -889,7 +888,7 @@ class BruceRugbyPhoto extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.contain,
                   image: AssetImage(
-                    'bruc3balo/assets/bruce_rugby.jpg',
+                    'bruc3balo/assets/bruce_rugby.webp',
                   ),
                 ),
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -935,7 +934,7 @@ class ThatsMeLol extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               child: AutoSizeText(
                 "That is me LOL",
-                style: GoogleFonts.lovedByTheKing(
+                style: TextStyle(fontFamily: 'LovedByTheKing',
                   color: Colors.white,
                 ),
                 maxFontSize: 64,

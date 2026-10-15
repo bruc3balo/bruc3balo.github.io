@@ -8,7 +8,6 @@ import 'package:bruce_omukoko_portfolio/presentation/utils/extensions.dart';
 import 'package:bruce_omukoko_portfolio/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SkillsPage extends StatefulWidget {
   const SkillsPage({
@@ -28,10 +27,11 @@ class _SkillsPageState extends State<SkillsPage> {
   final ValueNotifier<double> opacityStream = ValueNotifier(1);
 
   bool reverse = false;
+  late final Timer timer;
 
   @override
   void initState() {
-    Timer.periodic(
+    timer = Timer.periodic(
       const Duration(milliseconds: 200),
       (timer) {
         double val = opacityStream.value;
@@ -52,6 +52,13 @@ class _SkillsPageState extends State<SkillsPage> {
       },
     );
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    opacityStream.dispose();
+    super.dispose();
   }
 
   @override
@@ -84,7 +91,7 @@ class _SkillsPageState extends State<SkillsPage> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             "Skills",
-                            style: GoogleFonts.inter(
+                            style: TextStyle(fontFamily: 'Inter',
                               fontWeight: FontWeight.w600,
                               fontSize: 60,
                               color: orange,
@@ -177,12 +184,12 @@ class _SkillsPageState extends State<SkillsPage> {
                             ),
                             Text(
                               widget.skillsViewModel.getTechnology(t).name,
-                              style: GoogleFonts.aBeeZee(),
+                              style: const TextStyle(fontFamily: 'ABeeZee'),
                               textAlign: TextAlign.center,
                             ),
                             Text(
                               widget.skillsViewModel.getTechnology(t).xp,
-                              style: GoogleFonts.aBeeZee(),
+                              style: const TextStyle(fontFamily: 'ABeeZee'),
                               textAlign: TextAlign.center,
                             ),
                           ],
@@ -213,7 +220,7 @@ class PsstPressHere extends StatelessWidget {
       children: [
         Text(
           "Psst press here",
-          style: GoogleFonts.lovedByTheKing(
+          style: TextStyle(fontFamily: 'LovedByTheKing',
             color: Colors.white,
             fontSize: isMobileView ? 24 : 64,
           ),

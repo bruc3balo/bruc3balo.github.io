@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es-ES"><head>
+<html lang="en"><head>
     <!--
       If you are serving your web app in a path other than the root, change the
       href value below to reflect the base path you are serving from.
@@ -17,7 +17,7 @@
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="description" content="Bruce's Portfolio website">
+    <meta name="description" content="Bruce Omukoko, Flutter and backend developer. Portfolio, skills, publications and contact.">
 
     <!-- iOS meta tags & icons -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -28,7 +28,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <title>bruce_omukoko_portfolio</title>
+    <title>Bruce Omukoko | Portfolio</title>
     <link rel="manifest" href="manifest.json">
   <style id="splash-screen-style">
     html {
@@ -88,6 +88,40 @@
       right: 0;
     }
 
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-family: sans-serif;
+      color: #FFFAFF;
+      transition: opacity .3s;
+    }
+
+    #loading h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    #loading h1 span {
+      color: #EC7F00;
+    }
+
+    #loading .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #EC7F00;
+      animation: pulse 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      50% { transform: scale(1.8); opacity: .4; }
+    }
+
     @media (prefers-color-scheme: dark) {
       body {
         background-color: #25292D;
@@ -104,6 +138,15 @@
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
 </head>
 <body>
+<div id="loading">
+  <h1><span>Bruce</span> Omukoko</h1>
+  <div class="dot"></div>
+</div>
+<script>
+    window.addEventListener('flutter-first-frame', function () {
+      document.getElementById('loading')?.remove();
+    });
+</script>
 <script>
     {{flutter_bootstrap_js}}
 </script>
