@@ -13,36 +13,55 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
         with:
-          channel: 'stable'
-          flutter-version: '3.47.7'
+          sdk: '3.13.5'
 
-      - name: Enable web
-        run: flutter config --enable-web
+      - name: Install Jaspr CLI
+        run: dart pub global activate jaspr_cli 0.23.5
 
       - name: Get dependencies
-        run: flutter pub get
+        run: dart pub get
 
-      - name: Build
-        run: flutter build web --wasm --base-href "/"
+      - name: Analyze
+        run: dart analyze --fatal-infos
 
-      - name: Configure 404
+      - name: Build static site
+        run: jaspr build
+
+      - name: Drop build tooling files
+        # The site has no client-side Dart, so nothing under packages/ is loaded by the pages.
+        run: rm -rf build/jaspr/packages
+
+      - name: Report page weight
         run: |
-          cp build/web/index.html build/web/404.html
+          find build/jaspr -type f -printf '%s\t%p\n' | sort -rn | head -25
+          du -sh build/jaspr
+          echo "Script tags in index.html:"
+          grep -o '<script[^>]*>' build/jaspr/index.html || true
 
       - name: Add CNAME
-        run: echo "bruc3balo.github.io" > build/web/CNAME
+        run: echo "bruc3balo.github.io" > build/jaspr/CNAME
+
+      - name: Upload preview
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-preview
+          path: site/build/jaspr
 
       - name: Deploy
         if: github.ref == 'refs/heads/speed-improvements' && github.event_name != 'pull_request'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/web
+          publish_dir: ./site/build/jaspr
           force_orphan: true
