@@ -262,7 +262,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _flutterTechnology = Technologies(
     name: 'Flutter',
     brief:
-    "Flutter is a modern cross-platform framework that enables rapid development of high-performance, visually stunning mobile applications.",
+    "I build Flutter apps for Android, iOS and the web from one Dart codebase.",
     url: 'https://flutter.dev',
     technologyEnum: TechnologyEnum.flutterTechnology,
     startDate: DateTime(2021, DateTime.january),
@@ -270,28 +270,29 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Cross-Platform Development',
         brief:
-        "Build mobile applications for iOS and Android from a single codebase using Flutter and Dart.",
+        "Build responsive UIs that adapt from phones to tablets and the browser.",
         points: [
-          "Developed responsive UIs with Flutter's flexible widgets.",
-          "Integrated RESTful APIs for real-time data synchronization.",
+          "Composed custom widgets and animations on top of Material.",
+          "Connected apps to REST and GraphQL APIs.",
         ],
       ),
       Ability(
         name: 'State Management',
         brief:
-        "Efficiently manage app state using providers, Riverpod, and Bloc architectures.",
+        "Manage app state with Bloc, Riverpod and Provider, picking the one that fits the app.",
         points: [
-          "Implemented complex navigation flows with dynamic state handling.",
-          "Optimized performance by reducing unnecessary widget rebuilds.",
+          "Built multi-step navigation flows driven by app state.",
+          "Cut unnecessary widget rebuilds to keep scrolling and animations smooth.",
         ],
       ),
       Ability(
         name: 'Firebase Integration',
         brief:
-        "Seamlessly integrated Firebase services to enhance app functionality.",
+        "Use Firebase as a ready-made backend for login, data and notifications.",
         points: [
-          "Implemented Firebase Authentication for secure login flows.",
-          "Utilized Firestore for real-time data storage and retrieval.",
+          "Set up sign-in flows with Firebase Authentication.",
+          "Synced data in real time with Cloud Firestore.",
+          "Sent push notifications with Firebase Cloud Messaging.",
         ],
       ),
     ],
