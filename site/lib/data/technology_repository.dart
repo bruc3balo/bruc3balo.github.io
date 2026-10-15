@@ -95,7 +95,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _kubernetesTechnology = Technologies(
     name: 'Kubernetes',
     brief:
-    "Kubernetes automates deployment, scaling, and management of containerized applications, ensuring optimal resource utilization.",
+    "I deploy and run my services on bare-metal Kubernetes clusters, with scaling, routing and health checks set up so they look after themselves.",
     url: 'https://kubernetes.io',
     technologyEnum: TechnologyEnum.kubernetesTechnology,
     startDate: DateTime(2024, DateTime.february),
@@ -103,37 +103,34 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Deployment and Scaling',
         brief:
-        "Orchestrated deployments with auto-scaling for dynamic workloads.",
+        "Roll out services with zero-downtime updates and scale them automatically as traffic changes.",
         points: [
-          "Implemented replica sets for scaling.",
-          "Enabled auto-scaling based on CPU, memory, and request metrics.",
+          "Used Deployments with rolling updates and multiple replicas.",
+          "Set up Horizontal Pod Autoscalers driven by CPU, memory and request metrics.",
         ],
       ),
       Ability(
         name: 'Networking and Traffic Management',
         brief:
-        "Managed seamless network communication and traffic routing within Kubernetes clusters.",
+        "Route traffic into and around the cluster so every service is reachable at the right address.",
         points: [
-          "Exposed services internally and externally with Nginx ingress.",
+          "Exposed services with the NGINX Ingress Controller, including TLS certificates.",
           "Provisioned load balancers for distributed traffic handling.",
         ],
       ),
       Ability(
         name: 'Configuration and Secrets Management',
         brief:
-        "Centralized management of application secrets and configurations for enhanced security.",
+        "Keep app settings and secrets out of images and out of plain text.",
         points: [
-          "Utilized ConfigMaps for dynamic application settings.",
+          "Used ConfigMaps for settings that change per environment.",
           "Stored sensitive data securely in encrypted Git repositories.",
         ],
       ),
       Ability(
         name: 'Monitoring and Health Checks',
         brief:
-        "Ensured application availability with readiness and liveness probes.",
-        points: [
-          "Configured HTTP and TCP probes to monitor pod health and traffic readiness.",
-        ],
+        "Use readiness and liveness probes so Kubernetes only sends traffic to healthy pods and restarts stuck ones.",
       ),
     ],
   );
