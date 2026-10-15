@@ -247,6 +247,15 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
           "Used DataBinding to cut boilerplate in XML screens.",
         ],
       ),
+      Ability(
+        name: 'Networking with GraphQL',
+        brief:
+        "Connect apps to GraphQL APIs with Apollo Kotlin.",
+        points: [
+          "Generated type-safe Kotlin models from the GraphQL schema.",
+          "Used Apollo's normalized cache so screens load fast and work offline.",
+        ],
+      ),
     ],
   );
 
