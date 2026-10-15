@@ -33,7 +33,7 @@ class SkillRepositoryImpl extends SkillRepository {
   SkillBoard get _mobileDevelopment => const SkillBoard(
         name: 'Mobile Development',
         brief:
-            "Proficient in mobile development, encompassing both Android native and Flutter cross-platform development, with expertise in creating high-quality, user-friendly mobile applications for diverse platforms and devices.",
+            "I build mobile apps in Flutter for Android and iOS, and in native Android with Kotlin and Java when an app needs to go deeper into the platform.",
         skillsEnum: SkillsEnum.mobileDevelopment,
         technologies: [
           TechnologyEnum.nativeAndroidTechnology,

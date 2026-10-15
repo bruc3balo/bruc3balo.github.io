@@ -214,7 +214,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _nativeAndroidTechnology = Technologies(
     name: 'Native Android',
     brief:
-    "With over 5 years of experience, I specialize in creating robust Android applications using Java, XML layouts, and the MVVM architecture, ensuring scalability, maintainability, and user satisfaction.",
+    "I build native Android apps in Kotlin and Java, with UIs in Jetpack Compose or XML layouts and an MVI architecture that stays easy to maintain as the app grows.",
     url: 'https://developer.android.com',
     technologyEnum: TechnologyEnum.nativeAndroidTechnology,
     startDate: DateTime(2020, DateTime.may),
@@ -222,29 +222,29 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Android SDK',
         brief:
-        "Comprehensive knowledge of Android SDK components, enabling efficient app development and lifecycle management.",
+        "Work across the Android SDK, from lifecycles and navigation to local storage and background work.",
         points: [
-          "Designed interactive user interfaces using activities and fragments.",
-          "Integrated Room database for robust local storage.",
-          "Utilized LiveData and ViewModel for reactive programming.",
+          "Built screens with Compose, plus activities and fragments in older apps.",
+          "Stored data locally with Room.",
+          "Managed UI state with ViewModel and Kotlin Flow in an MVI setup.",
         ],
       ),
       Ability(
-        name: 'Java Logic Programming',
+        name: 'Kotlin and Java',
         brief:
-        "Developed clean and efficient backend logic using Java 8/11 features.",
+        "Write app logic in Kotlin, and maintain Java codebases.",
         points: [
-          "Implemented background processing for smooth user experiences.",
-          "Designed robust error-handling mechanisms for high reliability.",
+          "Ran background work with coroutines and WorkManager so the UI stays smooth.",
+          "Handled errors and offline cases so the app fails gracefully.",
         ],
       ),
       Ability(
-        name: 'XML Layouts',
+        name: 'UI: Compose and XML',
         brief:
-        "Designed visually appealing UI components following Material Design principles.",
+        "Build Material Design UIs declaratively in Jetpack Compose, and in XML layouts for existing screens.",
         points: [
-          "Modularized layouts for reusable components.",
-          "Leveraged DataBinding to reduce boilerplate code and enhance readability.",
+          "Built reusable composables and layout components.",
+          "Used DataBinding to cut boilerplate in XML screens.",
         ],
       ),
     ],
