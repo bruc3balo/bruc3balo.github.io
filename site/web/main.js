@@ -5,8 +5,25 @@
 
   var RIVE_VERSION = '2.44.2';
   var RIVE_URL = 'https://cdn.jsdelivr.net/npm/@rive-app/canvas@' + RIVE_VERSION + '/rive.js';
+  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Dialogs: [data-open="id"] opens, [data-close] or a backdrop click closes.
+  // Dialogs: [data-open="id"] opens, [data-close], Escape or a backdrop click closes. Closing plays a short
+  // exit animation first (see .closing in styles.css).
+  var closeDialog = function (d) {
+    if (!d.open || d.classList.contains('closing')) return;
+    if (reducedMotion) { d.close(); return; }
+    d.classList.add('closing');
+    var finished = false;
+    var done = function () {
+      if (finished) return;
+      finished = true;
+      d.removeEventListener('animationend', done);
+      d.classList.remove('closing');
+      d.close();
+    };
+    d.addEventListener('animationend', done);
+    setTimeout(done, 300); // in case the animation never runs
+  };
   document.addEventListener('click', function (e) {
     var opener = e.target.closest('[data-open]');
     if (opener) {
@@ -15,8 +32,11 @@
       return;
     }
     var closer = e.target.closest('[data-close]');
-    if (closer) { closer.closest('dialog').close(); return; }
-    if (e.target.tagName === 'DIALOG') e.target.close();
+    if (closer) { closeDialog(closer.closest('dialog')); return; }
+    if (e.target.tagName === 'DIALOG') closeDialog(e.target);
+  });
+  document.querySelectorAll('dialog').forEach(function (d) {
+    d.addEventListener('cancel', function (e) { e.preventDefault(); closeDialog(d); });
   });
 
   // Experience labels are rendered at build time; refresh them so they never go stale.
@@ -26,6 +46,29 @@
     var years = Math.round(days / 365);
     el.textContent = years + ' year' + (years === 1 ? '' : 's') + ' experience';
   });
+
+  // Header gets a shadow once the page is scrolled.
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var onScroll = function () { header.classList.toggle('scrolled', window.scrollY > 8); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // Fade content in as it scrolls into view. Without IntersectionObserver everything is simply shown.
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var revealer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('in');
+        revealer.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { revealer.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
 
   // Highlight the section currently on screen in the header.
   var links = document.querySelectorAll('[data-section]');
@@ -46,9 +89,26 @@
   }
 
   // Rive: only download the runtime once the Publications section is near the viewport.
+  // The centre badge (Truth or Drink) is a one-shot animation, so it is replayed whenever it comes into view and
+  // whenever the menu is toggled. The faces only play while the menu is open, starting from the beginning each time.
   var menu = document.querySelector('.rive-menu');
   if (menu) {
-    menu.querySelector('.rive-centre').addEventListener('click', function () { menu.classList.toggle('open'); });
+    var centreButton = menu.querySelector('.rive-centre');
+    var centre = null;
+    var faces = [];
+
+    var replay = function (r) { if (r) { r.reset(); r.play(); } };
+    var syncFaces = function () {
+      var open = menu.classList.contains('open');
+      faces.forEach(function (r) { if (open) replay(r); else r.pause(); });
+    };
+
+    centreButton.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      centreButton.setAttribute('aria-expanded', open ? 'true' : 'false');
+      replay(centre);
+      syncFaces();
+    });
 
     var started = false;
     var startRive = function () {
@@ -57,22 +117,32 @@
       var s = document.createElement('script');
       s.src = RIVE_URL;
       s.onload = function () {
+        var rive = window.rive;
         menu.querySelectorAll('canvas[data-rive]').forEach(function (canvas) {
-          new window.rive.Rive({
+          var isCentre = !!canvas.closest('.rive-centre');
+          var r = new rive.Rive({
             src: canvas.getAttribute('data-rive'),
             canvas: canvas,
-            autoplay: true,
-            layout: new window.rive.Layout({ fit: window.rive.Fit.Contain }),
-            onLoad: function () { this.resizeDrawingSurfaceToCanvas && this.resizeDrawingSurfaceToCanvas(); }
+            autoplay: isCentre || menu.classList.contains('open'),
+            layout: new rive.Layout({ fit: rive.Fit.Contain }),
+            // Faces load while shrunk inside the closed menu, so sizing to their on-screen box would make them blurry
+            // once they fly out; they keep the canvas's own 340px surface instead.
+            onLoad: function () { if (isCentre) r.resizeDrawingSurfaceToCanvas(); }
           });
+          if (isCentre) centre = r; else faces.push(r);
         });
       };
       document.head.appendChild(s);
     };
+
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries, obs) {
         if (entries.some(function (en) { return en.isIntersecting; })) { obs.disconnect(); startRive(); }
       }, { rootMargin: '400px 0px' }).observe(menu);
+      // Replay the badge each time it is actually on screen, so its intro isn't spent while scrolled away.
+      new IntersectionObserver(function (entries) {
+        if (entries.some(function (en) { return en.isIntersecting; })) replay(centre);
+      }, { threshold: 0.6 }).observe(centreButton);
     } else {
       startRive();
     }
@@ -85,8 +155,9 @@
     var floaters = Array.prototype.map.call(area.querySelectorAll('.floater'), function (el) {
       return {
         el: el,
-        x: Math.random() * Math.max(area.clientWidth - 130, 1),
-        y: Math.random() * Math.max(area.clientHeight - 130, 1),
+        size: el.offsetWidth, // 130px, smaller on phones (see styles.css)
+        x: Math.random() * Math.max(area.clientWidth - el.offsetWidth, 1),
+        y: Math.random() * Math.max(area.clientHeight - el.offsetHeight, 1),
         dx: Math.random() < 0.5 ? -1 : 1,
         dy: Math.random() < 0.5 ? -1 : 1,
         dragging: false
@@ -97,9 +168,9 @@
     var tick = function (now) {
       var dt = Math.min((now - last) / 1000, 0.1);
       last = now;
-      var maxX = area.clientWidth - 130;
-      var maxY = area.clientHeight - 130;
       floaters.forEach(function (f) {
+        var maxX = area.clientWidth - f.size;
+        var maxY = area.clientHeight - f.size;
         if (!f.dragging) {
           if (f.x >= maxX) f.dx = -1; else if (f.x <= 0) f.dx = 1;
           if (f.y >= maxY) f.dy = -1; else if (f.y <= 0) f.dy = 1;
@@ -116,6 +187,7 @@
       var startX, startY, moved;
       f.el.addEventListener('pointerdown', function (e) {
         f.dragging = true; moved = false;
+        f.el.classList.add('dragging');
         startX = e.clientX - f.x; startY = e.clientY - f.y;
         f.el.setPointerCapture(e.pointerId);
       });
@@ -125,7 +197,9 @@
         if (Math.abs(nx - f.x) + Math.abs(ny - f.y) > 3) moved = true;
         f.x = nx; f.y = ny;
       });
-      f.el.addEventListener('pointerup', function () { f.dragging = false; });
+      var drop = function () { f.dragging = false; f.el.classList.remove('dragging'); };
+      f.el.addEventListener('pointerup', drop);
+      f.el.addEventListener('pointercancel', drop);
       f.el.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
     });
   }

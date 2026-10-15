@@ -13,7 +13,7 @@ class SiteHeader extends StatelessComponent {
     return header(classes: 'site-header', [
       a(href: playground ? '/' : '#about', classes: 'brand', [
         span(classes: 'accent', [.text('Bruce')]),
-        .text(' Omukoko'),
+        span(classes: 'surname', [.text(' Omukoko')]),
       ]),
       if (playground)
         span(classes: 'page-title', [.text('Skills Playground')])

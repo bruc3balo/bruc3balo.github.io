@@ -28,6 +28,8 @@ void main() {
       link(rel: 'preload', href: '/fonts/Inter-400.woff2', as: 'font', type: 'font/woff2', attributes: {'crossorigin': ''}),
       link(rel: 'preload', href: '/fonts/Inter-700.woff2', as: 'font', type: 'font/woff2', attributes: {'crossorigin': ''}),
       link(rel: 'stylesheet', href: '/styles.css'),
+      // Lets the stylesheet hide scroll-reveal content only when main.js will be there to show it again.
+      script(content: "document.documentElement.classList.add('js')"),
       script(src: '/main.js', defer: true),
     ],
     body: App(),
