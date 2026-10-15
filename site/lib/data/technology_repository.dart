@@ -342,7 +342,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _postgresTechnology = Technologies(
     name: 'PostgreSQL',
     brief:
-    "PostgreSQL is a powerful, open-source relational database known for its extensibility, reliability, and performance.",
+    "PostgreSQL is my default database for new projects, from schema design through tuning and security.",
     url: 'https://www.postgresql.org',
     technologyEnum: TechnologyEnum.postgresTechnology,
     startDate: DateTime(2020, DateTime.july),
@@ -350,37 +350,37 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Database Design',
         brief:
-        "Proficient in designing normalized database schemas for scalable and efficient data storage.",
+        "Design normalized schemas that keep data consistent as the app grows.",
         points: [
-          "Created relational schemas with primary and foreign keys for data integrity.",
-          "Optimized table indexing for faster query performance.",
+          "Enforced integrity with primary keys, foreign keys and constraints.",
+          "Managed schema changes with versioned migrations.",
         ],
       ),
       Ability(
         name: 'Advanced Querying',
         brief:
-        "Developed advanced SQL queries to meet complex application needs.",
+        "Write SQL for reporting and analytics, not just simple lookups.",
         points: [
-          "Implemented complex joins and subqueries for data retrieval.",
-          "Utilized aggregate functions and window functions for analytics.",
+          "Combined data with joins, subqueries and CTEs.",
+          "Built reports with aggregates and window functions.",
         ],
       ),
       Ability(
         name: 'Performance Optimization',
         brief:
-        "Ensured optimal database performance through tuning and monitoring.",
+        "Find and fix slow queries before users feel them.",
         points: [
-          "Analyzed and optimized slow queries using EXPLAIN plans.",
-          "Managed connection pools for high-concurrency scenarios.",
+          "Read EXPLAIN ANALYZE plans and added the right indexes.",
+          "Sized connection pools for high-traffic services.",
         ],
       ),
       Ability(
         name: 'Data Security',
         brief:
-        "Implemented robust security measures for sensitive data protection.",
+        "Lock down who can read and change data.",
         points: [
-          "Set up roles and permissions for controlled data access.",
-          "Utilized SSL encryption to secure database connections.",
+          "Gave each service its own role with only the permissions it needs.",
+          "Required TLS on every database connection.",
         ],
       ),
     ],

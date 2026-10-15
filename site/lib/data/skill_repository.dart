@@ -53,9 +53,9 @@ class SkillRepositoryImpl extends SkillRepository {
       );
 
   SkillBoard get _databaseAdministration => const SkillBoard(
-        name: 'Database administrations',
+        name: 'Database Administration',
         brief:
-            "Proficient in database administration, encompassing tasks such as database installation, configuration, performance tuning, backup and recovery, security management, and troubleshooting, ensuring optimal functionality, reliability, and security of database systems.",
+            "I design, tune and look after the databases behind my apps, relational and NoSQL, from schema design to backups and access control.",
         skillsEnum: SkillsEnum.databaseAdministration,
         technologies: [
           TechnologyEnum.postgresTechnology,
