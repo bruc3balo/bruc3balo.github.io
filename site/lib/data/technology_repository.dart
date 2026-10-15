@@ -414,7 +414,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _mongoDbTechnology = Technologies(
     name: 'MongoDB',
     brief:
-    "MongoDB is a high-performance NoSQL database designed for flexible, scalable, and document-oriented storage, catering to modern, data-intensive applications.",
+    "I reach for MongoDB when data is document-shaped or changes shape often.",
     startDate: DateTime(2021, DateTime.august),
     technologyEnum: TechnologyEnum.mongoDbTechnology,
     url: 'https://www.mongodb.com',
@@ -422,20 +422,21 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Data Modeling',
         brief:
-        "Expertise in designing and implementing flexible document-based schemas that align with application requirements.",
+        "Model documents around how the app reads them.",
         points: [
-          "Created dynamic schemas for rapid development.",
-          "Designed indexes to optimize query performance.",
-          "Managed relationships using embedded documents and references.",
+          "Chose between embedding and referencing based on access patterns.",
+          "Added indexes to match the queries the app actually runs.",
+          "Built reports with the aggregation pipeline.",
         ],
       ),
       Ability(
         name: 'Scalability and Performance',
         brief:
-        "Proficient in scaling MongoDB clusters and optimizing performance for high-throughput operations.",
+        "Keep MongoDB fast and available as data grows.",
         points: [
-          "Configured sharding for large-scale data distribution.",
-          "Tuned performance using profiling and monitoring tools.",
+          "Ran replica sets for failover.",
+          "Configured sharding to spread large collections across nodes.",
+          "Found slow operations with the profiler and explain().",
         ],
       ),
     ],
