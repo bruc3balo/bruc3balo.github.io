@@ -37,6 +37,10 @@ jobs:
       - name: Build static site
         run: jaspr build
 
+      - name: Drop build tooling files
+        # The site has no client-side Dart, so nothing under packages/ is loaded by the pages.
+        run: rm -rf build/jaspr/packages
+
       - name: Report page weight
         run: |
           find build/jaspr -type f -printf '%s\t%p\n' | sort -rn | head -25
