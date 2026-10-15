@@ -1,5 +1,5 @@
 // Small progressive enhancements for the pre-rendered pages. Everything works as plain HTML without this file,
-// except the dialogs, the Rive animations and the playground motion.
+// except the dialogs and the Rive animations. The playground's motion lives in playground.js.
 (function () {
   'use strict';
 
@@ -146,61 +146,5 @@
     } else {
       startRive();
     }
-  }
-
-  // Playground: technologies drift and bounce off the edges; drag to move one, click to open it.
-  var area = document.querySelector('.playground');
-  if (area) {
-    var SPEED = 20; // px per second, same pace as the Flutter version (10px every 500ms)
-    var floaters = Array.prototype.map.call(area.querySelectorAll('.floater'), function (el) {
-      return {
-        el: el,
-        size: el.offsetWidth, // 130px, smaller on phones (see styles.css)
-        x: Math.random() * Math.max(area.clientWidth - el.offsetWidth, 1),
-        y: Math.random() * Math.max(area.clientHeight - el.offsetHeight, 1),
-        dx: Math.random() < 0.5 ? -1 : 1,
-        dy: Math.random() < 0.5 ? -1 : 1,
-        dragging: false
-      };
-    });
-
-    var last = performance.now();
-    var tick = function (now) {
-      var dt = Math.min((now - last) / 1000, 0.1);
-      last = now;
-      floaters.forEach(function (f) {
-        var maxX = area.clientWidth - f.size;
-        var maxY = area.clientHeight - f.size;
-        if (!f.dragging) {
-          if (f.x >= maxX) f.dx = -1; else if (f.x <= 0) f.dx = 1;
-          if (f.y >= maxY) f.dy = -1; else if (f.y <= 0) f.dy = 1;
-          f.x += f.dx * SPEED * dt;
-          f.y += f.dy * SPEED * dt;
-        }
-        f.el.style.transform = 'translate(' + f.x + 'px,' + f.y + 'px)';
-      });
-      requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-
-    floaters.forEach(function (f) {
-      var startX, startY, moved;
-      f.el.addEventListener('pointerdown', function (e) {
-        f.dragging = true; moved = false;
-        f.el.classList.add('dragging');
-        startX = e.clientX - f.x; startY = e.clientY - f.y;
-        f.el.setPointerCapture(e.pointerId);
-      });
-      f.el.addEventListener('pointermove', function (e) {
-        if (!f.dragging) return;
-        var nx = e.clientX - startX, ny = e.clientY - startY;
-        if (Math.abs(nx - f.x) + Math.abs(ny - f.y) > 3) moved = true;
-        f.x = nx; f.y = ny;
-      });
-      var drop = function () { f.dragging = false; f.el.classList.remove('dragging'); };
-      f.el.addEventListener('pointerup', drop);
-      f.el.addEventListener('pointercancel', drop);
-      f.el.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
-    });
   }
 })();
