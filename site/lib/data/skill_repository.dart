@@ -20,7 +20,7 @@ class SkillRepositoryImpl extends SkillRepository {
   SkillBoard get _devOps => const SkillBoard(
         name: 'DevOps',
         brief:
-            'As a dedicated DevOps engineer, I specialize in ensuring high availability, stability, and seamless operations of complex environments. With a relentless focus on eliminating downtime, I implement robust strategies and automation techniques to maintain uninterrupted service delivery. My expertise extends to orchestrating secure networking communications between all nodes, implementing encryption protocols, and enforcing stringent access controls to safeguard sensitive data. Through continuous monitoring, optimization, and automation, I strive to create resilient infrastructures that meet the highest standards of reliability and security',
+            "I set up and run the infrastructure my services live on, aiming to keep them available and stable. I automate builds and deployments with GitHub Actions, GitLab CI and Jenkins so releases ship with little or no downtime. I keep traffic between services encrypted and lock down who can reach what. I monitor what's running so problems are caught before users notice them.",
         skillsEnum: SkillsEnum.devOps,
         technologies: [
           TechnologyEnum.dockerTechnology,

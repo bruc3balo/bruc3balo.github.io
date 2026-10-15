@@ -55,7 +55,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _dockerTechnology = Technologies(
     name: 'Docker',
     brief:
-    "Docker revolutionizes application deployment by packaging software and dependencies into portable containers for consistent environments.",
+    "I package every service I ship as a Docker image, so it runs the same on my laptop, in CI and in production.",
     url: 'https://www.docker.com',
     technologyEnum: TechnologyEnum.dockerTechnology,
     startDate: DateTime(2022, DateTime.august),
@@ -63,31 +63,30 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       const Ability(
         name: 'Dockerfile Authoring',
         brief:
-        "Authored Dockerfiles for seamless containerization, enabling consistent application deployment across environments.",
+        "Write Dockerfiles that produce small, fast-building images.",
         points: [
           "Created lightweight images using multistage builds and slim base images.",
-          "Externalized configurations for flexibility and maintainability.",
+          "Pass settings in through environment variables so one image works in every environment.",
         ],
       ),
       const Ability(
         name: 'Private Registry Management',
         brief:
-        'Set up private Docker registries to secure container images and control access for team collaboration.',
+        'Run private registries so team images stay internal and only the right people can pull them.',
         url:
         'https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-22-04',
         points: [
           "Configured basic authentication for registry security.",
-          "Managed private images with controlled access for internal use.",
         ],
       ),
       const Ability(
         name: 'Testing with Docker Compose',
         brief:
-        "Streamlined testing environments using Docker Compose for multi-service orchestration.",
+        "Spin up a service and everything it depends on (databases, queues) with one Docker Compose command for local testing.",
         url: 'https://docs.docker.com/compose',
         points: [
-          "Created modular Compose files for isolated service testing.",
-          "Extended and reused Compose configurations for efficient testing setups.",
+          "Split Compose files per service so each one can be tested on its own.",
+          "Reused shared Compose config with extends and override files instead of copying it.",
         ],
       ),
     ],
