@@ -10,7 +10,7 @@ class SkillRepositoryImpl extends SkillRepository {
   SkillBoard get _backendDevelopment => const SkillBoard(
         name: 'Backend Development',
         brief:
-            'As a seasoned backend developer, I specialize in crafting robust architectures and optimizing performance to ensure seamless operation of backend systems. With a keen focus on security, I implement stringent measures to safeguard sensitive data and protect against potential threats. My expertise lies in architecting scalable solutions that deliver high performance and reliability, while prioritizing the integrity and confidentiality of backend systems. I am committed to staying abreast of the latest advancements in backend technologies to continuously enhance system efficiency and resilience.',
+            'I design and build backend systems that stay fast and reliable under real load. Security is built in from the start, with authentication, access control and careful handling of sensitive data.',
         skillsEnum: SkillsEnum.backendDevelopment,
         technologies: [
           TechnologyEnum.springTechnology,
@@ -20,19 +20,20 @@ class SkillRepositoryImpl extends SkillRepository {
   SkillBoard get _devOps => const SkillBoard(
         name: 'DevOps',
         brief:
-            'As a dedicated DevOps engineer, I specialize in ensuring high availability, stability, and seamless operations of complex environments. With a relentless focus on eliminating downtime, I implement robust strategies and automation techniques to maintain uninterrupted service delivery. My expertise extends to orchestrating secure networking communications between all nodes, implementing encryption protocols, and enforcing stringent access controls to safeguard sensitive data. Through continuous monitoring, optimization, and automation, I strive to create resilient infrastructures that meet the highest standards of reliability and security',
+            "I set up and run the infrastructure my services live on, aiming to keep them available and stable. I automate builds and deployments with GitHub Actions, GitLab CI and Jenkins so releases ship with little or no downtime. I keep traffic between services encrypted and lock down who can reach what. I monitor what's running so problems are caught before users notice them.",
         skillsEnum: SkillsEnum.devOps,
         technologies: [
           TechnologyEnum.dockerTechnology,
           TechnologyEnum.kubernetesTechnology,
           TechnologyEnum.gitTechnology,
+          TechnologyEnum.ciCdTechnology,
         ],
       );
 
   SkillBoard get _mobileDevelopment => const SkillBoard(
         name: 'Mobile Development',
         brief:
-            "Proficient in mobile development, encompassing both Android native and Flutter cross-platform development, with expertise in creating high-quality, user-friendly mobile applications for diverse platforms and devices.",
+            "I build mobile apps in Flutter for Android and iOS, and in native Android with Kotlin and Java when an app needs to go deeper into the platform.",
         skillsEnum: SkillsEnum.mobileDevelopment,
         technologies: [
           TechnologyEnum.nativeAndroidTechnology,
@@ -43,7 +44,7 @@ class SkillRepositoryImpl extends SkillRepository {
   SkillBoard get _vectorGraphics => const SkillBoard(
         name: 'Vector Graphics',
         brief:
-            'Proficient in creating vector graphics using Adobe Illustrator and animating them seamlessly using Rive, enhancing visual appeal and interactivity in digital designs.',
+            'I draw characters and icons in Adobe Illustrator, then bring them to life as interactive animations in Rive, like the faces on this site.',
         skillsEnum: SkillsEnum.vectorGraphics,
         technologies: [
           TechnologyEnum.riveTechnology,
@@ -52,9 +53,9 @@ class SkillRepositoryImpl extends SkillRepository {
       );
 
   SkillBoard get _databaseAdministration => const SkillBoard(
-        name: 'Database administrations',
+        name: 'Database Administration',
         brief:
-            "Proficient in database administration, encompassing tasks such as database installation, configuration, performance tuning, backup and recovery, security management, and troubleshooting, ensuring optimal functionality, reliability, and security of database systems.",
+            "I design, tune and look after the databases behind my apps, relational and NoSQL, from schema design to backups and access control.",
         skillsEnum: SkillsEnum.databaseAdministration,
         technologies: [
           TechnologyEnum.postgresTechnology,
@@ -64,9 +65,9 @@ class SkillRepositoryImpl extends SkillRepository {
       );
 
   SkillBoard get _umlVisualization => const SkillBoard(
-        name: 'UML visualization',
+        name: 'UML Visualization',
         brief:
-            "Proficient in UML (Unified Modeling Language) visualization, utilizing industry-standard diagrams and notations to depict system architectures, design patterns, and software processes, facilitating clear communication and collaboration among project stakeholders.",
+            "I sketch systems in UML before building them, so everyone agrees on the design before code is written.",
         skillsEnum: SkillsEnum.umlVisualization,
         technologies: [
           TechnologyEnum.visualParadigmTechnology,

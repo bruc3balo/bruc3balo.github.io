@@ -18,6 +18,7 @@ enum TechnologyEnum {
   dockerTechnology,
   kubernetesTechnology,
   gitTechnology,
+  ciCdTechnology,
   nativeAndroidTechnology,
   flutterTechnology,
   riveTechnology,

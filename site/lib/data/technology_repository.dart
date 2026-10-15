@@ -10,7 +10,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
 
   final Technologies _springTechnology = Technologies(
     name: 'Spring Framework',
-    brief: 'Spring is a comprehensive Java framework used to develop high-performance, secure, and scalable backend applications. It simplifies backend development, making it ideal for creating microservices, APIs, and enterprise systems.',
+    brief: 'My main backend framework. I use Spring Boot to build REST APIs, microservices and USSD services in Java.',
     url: 'https://spring.io/projects/spring-framework',
     startDate: DateTime(2021, DateTime.august),
     technologyEnum: TechnologyEnum.springTechnology,
@@ -18,36 +18,34 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       const Ability(
         name: 'USSD Applications',
         brief:
-        "Designed dynamic USSD menus with advanced session tracking, enabling interactive mobile services accessible without internet.",
+        "Built USSD menus with session tracking, so people can use mobile services on any phone without internet.",
       ),
       const Ability(
         name: 'Spring Data',
         brief:
-        'Proficient in efficient database operations using Spring Data and Hibernate, optimizing data access layers for seamless performance.',
+        'Build data access layers with Spring Data JPA and Hibernate that stay fast as data grows.',
         points: [
-          "Designed data models and implemented entities for database interaction.",
-          "Developed versatile queries using JPA Specifications and JPQL.",
-          "Optimized database performance with paging, indexing, and constraints.",
-          "Streamlined schema management with Hibernate ORM.",
+          "Designed data models and mapped them to JPA entities.",
+          "Wrote dynamic filters with JPA Specifications and custom JPQL queries.",
+          "Kept queries fast on large tables with pagination, indexes and constraints.",
         ],
       ),
       const Ability(
         name: 'Spring Security',
         brief:
-        'Secured applications using advanced authentication and authorization mechanisms, enhancing user experience and data protection.',
+        'Secure APIs with Spring Security, covering who can log in and what each user is allowed to do.',
         points: [
-          "Implemented JWT-based authentication and multi-factor authorization.",
-          "Controlled endpoint and method-level access for sensitive data.",
-          "Enabled secure multi-tenant systems based on user roles.",
+          "Implemented JWT login and multi-factor authentication.",
+          "Restricted access per endpoint and per method based on user roles.",
+          "Kept each tenant's data isolated in multi-tenant systems.",
         ],
       ),
       const Ability(
         name: 'Microservices',
         brief:
-        'Built resilient microservices using Spring Boot, messaging queues, and API gateways to ensure seamless inter-service communication.',
+        'Built Spring Boot microservices that talk through message queues and sit behind an API gateway.',
         points: [
-          "Integrated microservices using messaging systems for asynchronous operations.",
-          "Externalized configurations for dynamic and flexible deployments.",
+          "Moved slow work off the request path with asynchronous messaging between services.",
           "Designed batch processing systems for high-volume tasks.",
         ],
       ),
@@ -57,7 +55,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _dockerTechnology = Technologies(
     name: 'Docker',
     brief:
-    "Docker revolutionizes application deployment by packaging software and dependencies into portable containers for consistent environments.",
+    "I package every service I ship as a Docker image, so it runs the same on my laptop, in CI and in production.",
     url: 'https://www.docker.com',
     technologyEnum: TechnologyEnum.dockerTechnology,
     startDate: DateTime(2022, DateTime.august),
@@ -65,31 +63,30 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       const Ability(
         name: 'Dockerfile Authoring',
         brief:
-        "Authored Dockerfiles for seamless containerization, enabling consistent application deployment across environments.",
+        "Write Dockerfiles that produce small, fast-building images.",
         points: [
           "Created lightweight images using multistage builds and slim base images.",
-          "Externalized configurations for flexibility and maintainability.",
+          "Pass settings in through environment variables so one image works in every environment.",
         ],
       ),
       const Ability(
         name: 'Private Registry Management',
         brief:
-        'Set up private Docker registries to secure container images and control access for team collaboration.',
+        'Run private registries so team images stay internal and only the right people can pull them.',
         url:
         'https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-22-04',
         points: [
           "Configured basic authentication for registry security.",
-          "Managed private images with controlled access for internal use.",
         ],
       ),
       const Ability(
         name: 'Testing with Docker Compose',
         brief:
-        "Streamlined testing environments using Docker Compose for multi-service orchestration.",
+        "Spin up a service and everything it depends on (databases, queues) with one Docker Compose command for local testing.",
         url: 'https://docs.docker.com/compose',
         points: [
-          "Created modular Compose files for isolated service testing.",
-          "Extended and reused Compose configurations for efficient testing setups.",
+          "Split Compose files per service so each one can be tested on its own.",
+          "Reused shared Compose config with extends and override files instead of copying it.",
         ],
       ),
     ],
@@ -98,45 +95,47 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _kubernetesTechnology = Technologies(
     name: 'Kubernetes',
     brief:
-    "Kubernetes automates deployment, scaling, and management of containerized applications, ensuring optimal resource utilization.",
+    "I deploy and run my services on bare-metal Kubernetes clusters, with scaling, routing and health checks set up so they look after themselves.",
     url: 'https://kubernetes.io',
     technologyEnum: TechnologyEnum.kubernetesTechnology,
     startDate: DateTime(2024, DateTime.february),
     abilities: const [
       Ability(
+        name: 'Certifications',
+        brief:
+        "Certified Kubernetes and Cloud Native Associate (KCNA), and currently preparing for the Certified Kubernetes Application Developer (CKAD) exam.",
+      ),
+      Ability(
         name: 'Deployment and Scaling',
         brief:
-        "Orchestrated deployments with auto-scaling for dynamic workloads.",
+        "Roll out services with zero-downtime updates and scale them automatically as traffic changes.",
         points: [
-          "Implemented replica sets for scaling.",
-          "Enabled auto-scaling based on CPU, memory, and request metrics.",
+          "Used Deployments with rolling updates and multiple replicas.",
+          "Set up Horizontal Pod Autoscalers driven by CPU, memory and request metrics.",
         ],
       ),
       Ability(
         name: 'Networking and Traffic Management',
         brief:
-        "Managed seamless network communication and traffic routing within Kubernetes clusters.",
+        "Route traffic into and around the cluster so every service is reachable at the right address.",
         points: [
-          "Exposed services internally and externally with Nginx ingress.",
+          "Exposed services with the NGINX Ingress Controller, including TLS certificates.",
           "Provisioned load balancers for distributed traffic handling.",
         ],
       ),
       Ability(
         name: 'Configuration and Secrets Management',
         brief:
-        "Centralized management of application secrets and configurations for enhanced security.",
+        "Keep app settings and secrets out of images and out of plain text.",
         points: [
-          "Utilized ConfigMaps for dynamic application settings.",
+          "Used ConfigMaps for settings that change per environment.",
           "Stored sensitive data securely in encrypted Git repositories.",
         ],
       ),
       Ability(
         name: 'Monitoring and Health Checks',
         brief:
-        "Ensured application availability with readiness and liveness probes.",
-        points: [
-          "Configured HTTP and TCP probes to monitor pod health and traffic readiness.",
-        ],
+        "Use readiness and liveness probes so Kubernetes only sends traffic to healthy pods and restarts stuck ones.",
       ),
     ],
   );
@@ -144,7 +143,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _gitTechnology = Technologies(
     name: 'Git',
     brief:
-    "Git is a version control system that enables collaborative development, efficient tracking of changes, and robust branching workflows for codebases.",
+    "I've used Git daily since 2017, on GitHub and GitLab, for solo projects and team codebases alike.",
     startDate: DateTime(2017, DateTime.august),
     technologyEnum: TechnologyEnum.gitTechnology,
     url: 'https://github.com',
@@ -152,30 +151,61 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Repository Management',
         brief:
-        "Expertise in managing Git repositories to ensure clean and structured version control.",
-        points: [
-          "Created and cloned repositories for efficient collaboration.",
-          "Managed updates to both local and remote repositories seamlessly.",
-        ],
+        "Set up repositories for teams, with branch protection, required reviews and CI checks on every pull request.",
       ),
       Ability(
         name: 'Branch Management',
         brief:
-        "Proficient in handling branches for parallel development and streamlined code integration.",
+        "Keep history clean with feature branches, rebasing and fast-forward merges.",
         points: [
-          "Merged branches for integrating features and bug fixes.",
-          "Performed rebasing to maintain a linear history.",
-          "Recovered and fast-forwarded branches for consistent updates.",
+          "Recovered lost work and broken branches with reflog and reset.",
         ],
       ),
       Ability(
         name: 'Commit Management',
         brief:
-        "Skillful in commit handling to maintain a reliable and traceable project history.",
+        "Write small, clear commits so history is easy to review and debug.",
         points: [
-          "Checked out specific commits to debug or review changes.",
-          "Cherry-picked commits for selective integration.",
-          "Created new branches from existing commits for feature isolation.",
+          "Tracked down regressions with git bisect.",
+          "Cherry-picked fixes onto release branches.",
+        ],
+      ),
+    ],
+  );
+
+  final Technologies _ciCdTechnology = Technologies(
+    name: 'CI/CD',
+    brief:
+    "I build pipelines in GitHub Actions, GitLab CI and Jenkins that test, build and deploy every change automatically.",
+    startDate: DateTime(2022, DateTime.august),
+    technologyEnum: TechnologyEnum.ciCdTechnology,
+    url: 'https://github.com/features/actions',
+    abilities: const [
+      Ability(
+        name: 'Pipelines',
+        brief:
+        "Write pipelines as code that run on every push and pull request.",
+        points: [
+          "Built workflows in GitHub Actions, GitLab CI and Jenkins.",
+          "Cached dependencies and Docker layers to keep builds fast.",
+        ],
+      ),
+      Ability(
+        name: 'Automated Testing',
+        brief:
+        "Run tests and checks automatically so broken code never reaches the main branch.",
+        points: [
+          "Ran unit and integration tests on every pull request.",
+          "Blocked merges until builds, tests and linters pass.",
+        ],
+      ),
+      Ability(
+        name: 'Deployments',
+        brief:
+        "Ship to production straight from the pipeline, with no manual steps.",
+        points: [
+          "Built and pushed Docker images, then rolled them out to Kubernetes.",
+          "Kept separate staging and production environments with approval gates.",
         ],
       ),
     ],
@@ -184,7 +214,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _nativeAndroidTechnology = Technologies(
     name: 'Native Android',
     brief:
-    "With over 5 years of experience, I specialize in creating robust Android applications using Java, XML layouts, and the MVVM architecture, ensuring scalability, maintainability, and user satisfaction.",
+    "I build native Android apps in Kotlin and Java, with UIs in Jetpack Compose or XML layouts and an MVI architecture that stays easy to maintain as the app grows.",
     url: 'https://developer.android.com',
     technologyEnum: TechnologyEnum.nativeAndroidTechnology,
     startDate: DateTime(2020, DateTime.may),
@@ -192,29 +222,38 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Android SDK',
         brief:
-        "Comprehensive knowledge of Android SDK components, enabling efficient app development and lifecycle management.",
+        "Work across the Android SDK, from lifecycles and navigation to local storage and background work.",
         points: [
-          "Designed interactive user interfaces using activities and fragments.",
-          "Integrated Room database for robust local storage.",
-          "Utilized LiveData and ViewModel for reactive programming.",
+          "Built screens with Compose, plus activities and fragments in older apps.",
+          "Stored data locally with Room.",
+          "Managed UI state with ViewModel and Kotlin Flow in an MVI setup.",
         ],
       ),
       Ability(
-        name: 'Java Logic Programming',
+        name: 'Kotlin and Java',
         brief:
-        "Developed clean and efficient backend logic using Java 8/11 features.",
+        "Write app logic in Kotlin, and maintain Java codebases.",
         points: [
-          "Implemented background processing for smooth user experiences.",
-          "Designed robust error-handling mechanisms for high reliability.",
+          "Ran background work with coroutines and WorkManager so the UI stays smooth.",
+          "Handled errors and offline cases so the app fails gracefully.",
         ],
       ),
       Ability(
-        name: 'XML Layouts',
+        name: 'UI: Compose and XML',
         brief:
-        "Designed visually appealing UI components following Material Design principles.",
+        "Build Material Design UIs declaratively in Jetpack Compose, and in XML layouts for existing screens.",
         points: [
-          "Modularized layouts for reusable components.",
-          "Leveraged DataBinding to reduce boilerplate code and enhance readability.",
+          "Built reusable composables and layout components.",
+          "Used DataBinding to cut boilerplate in XML screens.",
+        ],
+      ),
+      Ability(
+        name: 'Networking with GraphQL',
+        brief:
+        "Connect apps to GraphQL APIs with Apollo Kotlin.",
+        points: [
+          "Generated type-safe Kotlin models from the GraphQL schema.",
+          "Used Apollo's normalized cache so screens load fast and work offline.",
         ],
       ),
     ],
@@ -223,7 +262,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _flutterTechnology = Technologies(
     name: 'Flutter',
     brief:
-    "Flutter is a modern cross-platform framework that enables rapid development of high-performance, visually stunning mobile applications.",
+    "I build Flutter apps for Android, iOS and the web from one Dart codebase.",
     url: 'https://flutter.dev',
     technologyEnum: TechnologyEnum.flutterTechnology,
     startDate: DateTime(2021, DateTime.january),
@@ -231,28 +270,29 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Cross-Platform Development',
         brief:
-        "Build mobile applications for iOS and Android from a single codebase using Flutter and Dart.",
+        "Build responsive UIs that adapt from phones to tablets and the browser.",
         points: [
-          "Developed responsive UIs with Flutter's flexible widgets.",
-          "Integrated RESTful APIs for real-time data synchronization.",
+          "Composed custom widgets and animations on top of Material.",
+          "Connected apps to REST and GraphQL APIs.",
         ],
       ),
       Ability(
         name: 'State Management',
         brief:
-        "Efficiently manage app state using providers, Riverpod, and Bloc architectures.",
+        "Manage app state with Bloc, Riverpod and Provider, picking the one that fits the app.",
         points: [
-          "Implemented complex navigation flows with dynamic state handling.",
-          "Optimized performance by reducing unnecessary widget rebuilds.",
+          "Built multi-step navigation flows driven by app state.",
+          "Cut unnecessary widget rebuilds to keep scrolling and animations smooth.",
         ],
       ),
       Ability(
         name: 'Firebase Integration',
         brief:
-        "Seamlessly integrated Firebase services to enhance app functionality.",
+        "Use Firebase as a ready-made backend for login, data and notifications.",
         points: [
-          "Implemented Firebase Authentication for secure login flows.",
-          "Utilized Firestore for real-time data storage and retrieval.",
+          "Set up sign-in flows with Firebase Authentication.",
+          "Synced data in real time with Cloud Firestore.",
+          "Sent push notifications with Firebase Cloud Messaging.",
         ],
       ),
     ],
@@ -261,7 +301,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _riveTechnology = Technologies(
     name: 'Rive',
     brief:
-    "Rive is a powerful design and animation tool used for creating interactive vector animations and illustrations for various digital platforms.",
+    "I animate vector art in Rive and ship it inside Flutter apps and websites.",
     startDate: DateTime(2022, DateTime.march),
     technologyEnum: TechnologyEnum.riveTechnology,
     url: 'https://rive.app',
@@ -269,32 +309,31 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Animating vectors',
         brief:
-        'Skilled in animating vector graphics, enhancing visual appeal and interactivity in digital designs for dynamic user experiences.',
+        'Rig and animate vector characters with bones and keyframes.',
       ),
       Ability(
-        name: 'State animations',
+        name: 'State machines',
         brief:
-        "Skilled in implementing state animations using state machines, effectively managing and controlling application states to create dynamic and responsive user interfaces.",
+        "Build state machines so animations react to taps, hovers and app state.",
       ),
     ],
   );
 
   final Technologies _adobeIllustratorTechnology = Technologies(
-    name: 'Adobe illustrator',
+    name: 'Adobe Illustrator',
     brief:
-    "Adobe Illustrator is a versatile vector graphics editor used for creating scalable illustrations, logos, icons, and other graphical elements for print, web, and multimedia projects.",
+    "I use Illustrator to draw characters, icons and logos as clean vectors that scale to any size.",
     startDate: DateTime(2022, DateTime.march),
     technologyEnum: TechnologyEnum.adobeIllustratorTechnology,
     url: 'https://www.adobe.com/products/illustrator.html',
     abilities: const [
       Ability(
-        name: 'Character modelling',
+        name: 'Character design',
         brief:
-        "Proficient in character drawing using Adobe Illustrator, leveraging its powerful vector-based tools to create detailed and expressive characters for various digital media and design projects.",
+        "Draw expressive characters with clean vector paths.",
         points: [
-          "Utilized vector paths for precision in character creation.",
-          "Incorporated layers and grouping for complex designs.",
-          "Adapted designs for both print and digital platforms.",
+          "Organized artwork in layers and groups so it's ready to animate in Rive.",
+          "Exported art for both print and screen.",
         ],
       ),
     ],
@@ -303,7 +342,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _postgresTechnology = Technologies(
     name: 'PostgreSQL',
     brief:
-    "PostgreSQL is a powerful, open-source relational database known for its extensibility, reliability, and performance.",
+    "PostgreSQL is my default database for new projects, from schema design through tuning and security.",
     url: 'https://www.postgresql.org',
     technologyEnum: TechnologyEnum.postgresTechnology,
     startDate: DateTime(2020, DateTime.july),
@@ -311,37 +350,37 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Database Design',
         brief:
-        "Proficient in designing normalized database schemas for scalable and efficient data storage.",
+        "Design normalized schemas that keep data consistent as the app grows.",
         points: [
-          "Created relational schemas with primary and foreign keys for data integrity.",
-          "Optimized table indexing for faster query performance.",
+          "Enforced integrity with primary keys, foreign keys and constraints.",
+          "Managed schema changes with versioned migrations.",
         ],
       ),
       Ability(
         name: 'Advanced Querying',
         brief:
-        "Developed advanced SQL queries to meet complex application needs.",
+        "Write SQL for reporting and analytics, not just simple lookups.",
         points: [
-          "Implemented complex joins and subqueries for data retrieval.",
-          "Utilized aggregate functions and window functions for analytics.",
+          "Combined data with joins, subqueries and CTEs.",
+          "Built reports with aggregates and window functions.",
         ],
       ),
       Ability(
         name: 'Performance Optimization',
         brief:
-        "Ensured optimal database performance through tuning and monitoring.",
+        "Find and fix slow queries before users feel them.",
         points: [
-          "Analyzed and optimized slow queries using EXPLAIN plans.",
-          "Managed connection pools for high-concurrency scenarios.",
+          "Read EXPLAIN ANALYZE plans and added the right indexes.",
+          "Sized connection pools for high-traffic services.",
         ],
       ),
       Ability(
         name: 'Data Security',
         brief:
-        "Implemented robust security measures for sensitive data protection.",
+        "Lock down who can read and change data.",
         points: [
-          "Set up roles and permissions for controlled data access.",
-          "Utilized SSL encryption to secure database connections.",
+          "Gave each service its own role with only the permissions it needs.",
+          "Required TLS on every database connection.",
         ],
       ),
     ],
@@ -350,36 +389,23 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _mysqlTechnology = Technologies(
     name: 'MySQL',
     brief:
-    "MySQL is a widely-used relational database known for its simplicity, speed, and reliability in managing structured data.",
+    "I run MySQL for apps and teams that already depend on it, with the same care for schema, speed and backups.",
     url: 'https://www.mysql.com',
     technologyEnum: TechnologyEnum.mysqlTechnology,
     startDate: DateTime(2020, DateTime.june),
     abilities: const [
       Ability(
-        name: 'Database Design',
+        name: 'Schema and Performance',
         brief:
-        "Proficient in designing normalized schemas for structured data storage.",
-        points: [
-          "Created efficient table structures to enforce data integrity.",
-          "Optimized database relations with foreign keys and indexing.",
-        ],
+        "Design MySQL schemas and tune slow queries with EXPLAIN and the right indexes.",
       ),
       Ability(
-        name: 'Query Optimization',
+        name: 'Backup and Recovery',
         brief:
-        "Improved application performance by optimizing database queries.",
+        "Make sure data can always be brought back.",
         points: [
-          "Analyzed slow queries using EXPLAIN for optimization.",
-          "Implemented indexing to boost query execution speed.",
-        ],
-      ),
-      Ability(
-        name: 'Data Backup and Recovery',
-        brief:
-        "Ensured data durability with robust backup and recovery mechanisms.",
-        points: [
-          "Automated database backups for regular snapshots.",
-          "Restored critical data efficiently during outages or failures.",
+          "Scheduled automatic backups and tested that they restore.",
+          "Restored production data after outages.",
         ],
       ),
     ],
@@ -388,7 +414,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _mongoDbTechnology = Technologies(
     name: 'MongoDB',
     brief:
-    "MongoDB is a high-performance NoSQL database designed for flexible, scalable, and document-oriented storage, catering to modern, data-intensive applications.",
+    "I reach for MongoDB when data is document-shaped or changes shape often.",
     startDate: DateTime(2021, DateTime.august),
     technologyEnum: TechnologyEnum.mongoDbTechnology,
     url: 'https://www.mongodb.com',
@@ -396,20 +422,21 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Data Modeling',
         brief:
-        "Expertise in designing and implementing flexible document-based schemas that align with application requirements.",
+        "Model documents around how the app reads them.",
         points: [
-          "Created dynamic schemas for rapid development.",
-          "Designed indexes to optimize query performance.",
-          "Managed relationships using embedded documents and references.",
+          "Chose between embedding and referencing based on access patterns.",
+          "Added indexes to match the queries the app actually runs.",
+          "Built reports with the aggregation pipeline.",
         ],
       ),
       Ability(
         name: 'Scalability and Performance',
         brief:
-        "Proficient in scaling MongoDB clusters and optimizing performance for high-throughput operations.",
+        "Keep MongoDB fast and available as data grows.",
         points: [
-          "Configured sharding for large-scale data distribution.",
-          "Tuned performance using profiling and monitoring tools.",
+          "Ran replica sets for failover.",
+          "Configured sharding to spread large collections across nodes.",
+          "Found slow operations with the profiler and explain().",
         ],
       ),
     ],
@@ -418,7 +445,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _visualParadigmTechnology = Technologies(
     name: 'Visual Paradigm',
     brief:
-    "Visual Paradigm is a robust tool for software and business process modeling, offering UML diagrams, agile tools, and collaboration capabilities to enhance system design and documentation.",
+    "I use Visual Paradigm to draw activity, data flow and entity-relationship diagrams for the systems I design.",
     startDate: DateTime(2020, DateTime.january),
     technologyEnum: TechnologyEnum.visualParadigmTechnology,
     url: 'https://www.visual-paradigm.com',
@@ -426,10 +453,9 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Activity Diagrams',
         brief:
-        "Proficient in creating activity diagrams to model workflows, enabling clear visualization of system processes and interactions.",
+        "Map out workflows step by step, including decisions and parallel paths.",
         points: [
-          "Modeled complex workflows for software systems.",
-          "Analyzed and optimized processes using clear diagrams.",
+          "Modeled user and system workflows before building them.",
         ],
         url:
         'https://www.visual-paradigm.com/tutorials/how-to-draw-activity-diagram-in-uml',
@@ -437,10 +463,9 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Data Flow Diagrams (DFD)',
         brief:
-        "Skilled in illustrating system data flows with DFDs, providing clarity in data processing and system analysis.",
+        "Show how data moves between processes, stores and outside systems.",
         points: [
-          "Visualized data movement between processes and entities.",
-          "Used DFDs to facilitate efficient communication with stakeholders.",
+          "Used DFDs to walk stakeholders through a system.",
         ],
         url:
         'https://www.visual-paradigm.com/tutorials/data-flow-diagram-dfd.jsp',
@@ -448,10 +473,9 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Entity-Relationship Diagrams (ERD)',
         brief:
-        "Experienced in crafting ERDs for database design, highlighting entity relationships, attributes, and structural organization.",
+        "Design database structure visually before writing any SQL.",
         points: [
-          "Designed comprehensive ERDs to streamline database implementation.",
-          "Simplified data relationships for enhanced database normalization.",
+          "Turned ERDs into normalized schemas.",
         ],
         url:
         'https://www.visual-paradigm.com/tutorials/databasedesign.jsp',
@@ -469,6 +493,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
      TechnologyEnum.dockerTechnology => _dockerTechnology,
      TechnologyEnum.kubernetesTechnology => _kubernetesTechnology,
      TechnologyEnum.gitTechnology => _gitTechnology,
+     TechnologyEnum.ciCdTechnology => _ciCdTechnology,
      TechnologyEnum.nativeAndroidTechnology => _nativeAndroidTechnology,
      TechnologyEnum.flutterTechnology => _flutterTechnology,
      TechnologyEnum.riveTechnology => _riveTechnology,
