@@ -340,12 +340,48 @@ details[open] .points { animation: rise .3s var(--ease-out); }
   .js .tech-tile.reveal { transition-delay: calc(var(--d, 0) * 60ms); }
 }
 
-/* Playground */
-.playground { position: relative; height: calc(100vh - var(--header-h)); overflow: hidden; }
+/* Playground. Without playground.js (or with reduced motion) the technologies simply wrap in a grid. */
+.playground { display: flex; flex-direction: column; height: calc(100vh - var(--header-h)); height: calc(100dvh - var(--header-h)); }
+.pg-bar { display: none; flex-direction: column; align-items: center; gap: 8px; padding: 12px 16px 8px; text-align: center; }
+.playground.live .pg-bar { display: flex; }
+.pg-modes { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(0, 0, 0, .3); }
+.pg-mode, .pg-chip {
+  padding: 7px 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.pg-mode:hover { color: var(--orange); }
+.pg-mode[aria-pressed="true"] { background: var(--orange); color: #fff; }
+.pg-hint { margin: 0; font-size: 14px; opacity: .75; }
+.pg-chips, .pg-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px; }
+.pg-chip { border-color: var(--skill); font-size: 13px; padding: 5px 12px; }
+.pg-chip:hover, .pg-chip[aria-pressed="true"] { background: var(--skill); color: var(--bg); }
+.pg-actions .btn { font-size: 14px; padding: 6px 16px; }
+.pg-score { font-family: 'Roboto Mono', monospace; font-weight: 600; }
+.playground.cleared .pg-score { color: var(--orange); }
+.playground.cleared .pg-score::after { content: '  All skills knocked loose!'; }
+.playground [data-for] { display: none; }
+.playground[data-mode="bubbles"] [data-for="bubbles"], .playground[data-mode="magnets"] [data-for="magnets"],
+.playground[data-mode="stars"] [data-for="stars"], .playground[data-mode="pit"] [data-for="pit"],
+.playground[data-mode="breakout"] [data-for="breakout"] { display: flex; }
+.playground [data-for].pg-hint { display: none; }
+.playground[data-mode="bubbles"] .pg-hint[data-for="bubbles"], .playground[data-mode="magnets"] .pg-hint[data-for="magnets"],
+.playground[data-mode="stars"] .pg-hint[data-for="stars"], .playground[data-mode="pit"] .pg-hint[data-for="pit"],
+.playground[data-mode="breakout"] .pg-hint[data-for="breakout"] { display: block; }
+
+.pg-arena { position: relative; flex: 1; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start; gap: 16px; padding: 16px; overflow: hidden; }
+.live .pg-arena { display: block; padding: 0; touch-action: none; }
+.pg-lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; display: none; }
+.pg-lines line { stroke-width: 1.5; stroke-linecap: round; transition: opacity .3s; }
+.live[data-mode="stars"] .pg-lines { display: block; }
+
 .floater {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 130px;
   display: flex;
   flex-direction: column;
@@ -356,15 +392,61 @@ details[open] .points { animation: rise .3s var(--ease-out); }
   background: none;
   color: var(--text);
   font: inherit;
-  cursor: grab;
-  touch-action: none;
-  will-change: transform;
+  cursor: pointer;
 }
-.floater .cover { width: 104px; height: 104px; transition: transform .3s var(--ease-spring), filter .3s; }
+.live .floater { position: absolute; top: 0; left: 0; z-index: 1; cursor: grab; touch-action: none; will-change: transform; }
+.floater .cover { width: 104px; height: 104px; transition: transform .3s var(--ease-spring), filter .3s, opacity .3s; }
 .floater:hover .cover { transform: scale(1.1); filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .4)); }
-.floater.dragging { cursor: grabbing; z-index: 1; }
+.floater.dragging { cursor: grabbing; z-index: 2; }
 .floater.dragging .cover { transform: scale(1.15) rotate(-6deg); }
-.floater span:last-child { color: var(--skill); font-size: 14px; text-align: center; }
+.floater span:last-child { color: var(--skill); font-size: 14px; text-align: center; transition: opacity .3s; }
+
+/* Bubbles: each cover sits in a tinted bubble in its skill's colour. */
+.live[data-mode="bubbles"] .cover, .live[data-mode="magnets"] .cover {
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--skill) 30%, transparent), inset 0 0 0 999px color-mix(in srgb, var(--skill) 12%, transparent);
+}
+/* Magnets: the others fade back while one skill is pulled together. */
+.live[data-mode="magnets"] .floater { transition: opacity .3s; }
+.live.pulling .floater:not(.lit) { opacity: .4; }
+/* Constellations: small twinkling stars, names only on the lit skill. */
+.live[data-mode="stars"] .floater span:last-child { opacity: 0; }
+.live[data-mode="stars"] .floater.lit span:last-child { opacity: 1; }
+.live[data-mode="stars"] .floater .cover { animation: twinkle 3s ease-in-out infinite alternate; }
+.live[data-mode="stars"] .floater:nth-child(3n) .cover { animation-delay: -1s; }
+.live[data-mode="stars"] .floater:nth-child(3n+1) .cover { animation-delay: -2s; }
+.live[data-mode="stars"] .floater.lit .cover { animation: none; filter: drop-shadow(0 0 14px var(--skill)); }
+@keyframes twinkle { from { opacity: .55; } to { opacity: 1; } }
+/* Breakout: bricks lose their names, knocked ones fade as they fall. */
+.live[data-mode="breakout"] .floater { cursor: pointer; }
+.live[data-mode="breakout"] .floater span:last-child { opacity: 0; }
+.floater.knocked { opacity: 0; transition: opacity .9s ease-in; pointer-events: none; }
+
+.pg-brief {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  z-index: 3;
+  width: min(520px, calc(100% - 32px));
+  padding: 12px 16px;
+  border-left: 4px solid var(--skill);
+  border-radius: 8px;
+  background: rgba(37, 41, 45, .92);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  transition: opacity .3s, transform .3s var(--ease-out);
+  display: none;
+}
+.live .pg-brief { display: block; }
+.pg-brief.show { opacity: 1; transform: translate(-50%, 0); }
+.pg-brief h3 { color: var(--skill); font-size: 16px; margin-bottom: 4px; }
+.pg-brief p { margin: 0; font-size: 14px; line-height: 1.5; }
+
+.pg-paddle, .pg-ball { position: absolute; top: 0; left: 0; display: none; pointer-events: none; }
+.live[data-mode="breakout"] .pg-paddle, .live[data-mode="breakout"] .pg-ball { display: block; }
+.pg-paddle { height: 12px; border-radius: 6px; background: var(--orange); box-shadow: 0 0 16px rgba(236, 127, 0, .5); }
+.pg-ball { width: 18px; height: 18px; border-radius: 50%; background: var(--text); box-shadow: 0 0 12px rgba(255, 250, 255, .6); }
 
 /* Mobile */
 @media (max-width: 999px) {
@@ -401,6 +483,9 @@ details[open] .points { animation: rise .3s var(--ease-out); }
   .floater { width: 96px; }
   .floater .cover { width: 72px; height: 72px; }
   .floater span:last-child { font-size: 12px; }
+  .pg-mode { padding: 6px 10px; font-size: 13px; }
+  .pg-hint { font-size: 13px; }
+  .pg-brief p { font-size: 13px; line-height: 1.4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
