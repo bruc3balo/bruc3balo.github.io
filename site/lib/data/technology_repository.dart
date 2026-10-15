@@ -143,7 +143,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _gitTechnology = Technologies(
     name: 'Git',
     brief:
-    "Git is a version control system that enables collaborative development, efficient tracking of changes, and robust branching workflows for codebases.",
+    "I've used Git daily since 2017, on GitHub and GitLab, for solo projects and team codebases alike.",
     startDate: DateTime(2017, DateTime.august),
     technologyEnum: TechnologyEnum.gitTechnology,
     url: 'https://github.com',
@@ -151,30 +151,23 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Repository Management',
         brief:
-        "Expertise in managing Git repositories to ensure clean and structured version control.",
-        points: [
-          "Created and cloned repositories for efficient collaboration.",
-          "Managed updates to both local and remote repositories seamlessly.",
-        ],
+        "Set up repositories for teams, with branch protection, required reviews and CI checks on every pull request.",
       ),
       Ability(
         name: 'Branch Management',
         brief:
-        "Proficient in handling branches for parallel development and streamlined code integration.",
+        "Keep history clean with feature branches, rebasing and fast-forward merges.",
         points: [
-          "Merged branches for integrating features and bug fixes.",
-          "Performed rebasing to maintain a linear history.",
-          "Recovered and fast-forwarded branches for consistent updates.",
+          "Recovered lost work and broken branches with reflog and reset.",
         ],
       ),
       Ability(
         name: 'Commit Management',
         brief:
-        "Skillful in commit handling to maintain a reliable and traceable project history.",
+        "Write small, clear commits so history is easy to review and debug.",
         points: [
-          "Checked out specific commits to debug or review changes.",
-          "Cherry-picked commits for selective integration.",
-          "Created new branches from existing commits for feature isolation.",
+          "Tracked down regressions with git bisect.",
+          "Cherry-picked fixes onto release branches.",
         ],
       ),
     ],
