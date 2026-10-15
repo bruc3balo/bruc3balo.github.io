@@ -389,28 +389,15 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _mysqlTechnology = Technologies(
     name: 'MySQL',
     brief:
-    "MySQL is a widely-used relational database known for its simplicity, speed, and reliability in managing structured data.",
+    "I run MySQL for apps and teams that already depend on it, with the same care for schema, speed and backups.",
     url: 'https://www.mysql.com',
     technologyEnum: TechnologyEnum.mysqlTechnology,
     startDate: DateTime(2020, DateTime.june),
     abilities: const [
       Ability(
-        name: 'Database Design',
+        name: 'Schema and Performance',
         brief:
-        "Proficient in designing normalized schemas for structured data storage.",
-        points: [
-          "Created efficient table structures to enforce data integrity.",
-          "Optimized database relations with foreign keys and indexing.",
-        ],
-      ),
-      Ability(
-        name: 'Query Optimization',
-        brief:
-        "Improved application performance by optimizing database queries.",
-        points: [
-          "Analyzed slow queries using EXPLAIN for optimization.",
-          "Implemented indexing to boost query execution speed.",
-        ],
+        "Design MySQL schemas and tune slow queries with EXPLAIN and the right indexes.",
       ),
       Ability(
         name: 'Data Backup and Recovery',
