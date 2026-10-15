@@ -44,7 +44,7 @@ class SkillRepositoryImpl extends SkillRepository {
   SkillBoard get _vectorGraphics => const SkillBoard(
         name: 'Vector Graphics',
         brief:
-            'Proficient in creating vector graphics using Adobe Illustrator and animating them seamlessly using Rive, enhancing visual appeal and interactivity in digital designs.',
+            'I draw characters and icons in Adobe Illustrator, then bring them to life as interactive animations in Rive, like the faces on this site.',
         skillsEnum: SkillsEnum.vectorGraphics,
         technologies: [
           TechnologyEnum.riveTechnology,

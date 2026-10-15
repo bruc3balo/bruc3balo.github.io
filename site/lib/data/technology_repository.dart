@@ -301,7 +301,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _riveTechnology = Technologies(
     name: 'Rive',
     brief:
-    "Rive is a powerful design and animation tool used for creating interactive vector animations and illustrations for various digital platforms.",
+    "I animate vector art in Rive and ship it inside Flutter apps and websites.",
     startDate: DateTime(2022, DateTime.march),
     technologyEnum: TechnologyEnum.riveTechnology,
     url: 'https://rive.app',
@@ -309,32 +309,31 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Animating vectors',
         brief:
-        'Skilled in animating vector graphics, enhancing visual appeal and interactivity in digital designs for dynamic user experiences.',
+        'Rig and animate vector characters with bones and keyframes.',
       ),
       Ability(
-        name: 'State animations',
+        name: 'State machines',
         brief:
-        "Skilled in implementing state animations using state machines, effectively managing and controlling application states to create dynamic and responsive user interfaces.",
+        "Build state machines so animations react to taps, hovers and app state.",
       ),
     ],
   );
 
   final Technologies _adobeIllustratorTechnology = Technologies(
-    name: 'Adobe illustrator',
+    name: 'Adobe Illustrator',
     brief:
-    "Adobe Illustrator is a versatile vector graphics editor used for creating scalable illustrations, logos, icons, and other graphical elements for print, web, and multimedia projects.",
+    "I use Illustrator to draw characters, icons and logos as clean vectors that scale to any size.",
     startDate: DateTime(2022, DateTime.march),
     technologyEnum: TechnologyEnum.adobeIllustratorTechnology,
     url: 'https://www.adobe.com/products/illustrator.html',
     abilities: const [
       Ability(
-        name: 'Character modelling',
+        name: 'Character design',
         brief:
-        "Proficient in character drawing using Adobe Illustrator, leveraging its powerful vector-based tools to create detailed and expressive characters for various digital media and design projects.",
+        "Draw expressive characters with clean vector paths.",
         points: [
-          "Utilized vector paths for precision in character creation.",
-          "Incorporated layers and grouping for complex designs.",
-          "Adapted designs for both print and digital platforms.",
+          "Organized artwork in layers and groups so it's ready to animate in Rive.",
+          "Exported art for both print and screen.",
         ],
       ),
     ],
