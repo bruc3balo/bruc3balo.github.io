@@ -10,7 +10,7 @@ class SkillRepositoryImpl extends SkillRepository {
   SkillBoard get _backendDevelopment => const SkillBoard(
         name: 'Backend Development',
         brief:
-            'As a seasoned backend developer, I specialize in crafting robust architectures and optimizing performance to ensure seamless operation of backend systems. With a keen focus on security, I implement stringent measures to safeguard sensitive data and protect against potential threats. My expertise lies in architecting scalable solutions that deliver high performance and reliability, while prioritizing the integrity and confidentiality of backend systems. I am committed to staying abreast of the latest advancements in backend technologies to continuously enhance system efficiency and resilience.',
+            'I design and build backend systems that stay fast and reliable under real load. Security is built in from the start, with authentication, access control and careful handling of sensitive data.',
         skillsEnum: SkillsEnum.backendDevelopment,
         technologies: [
           TechnologyEnum.springTechnology,

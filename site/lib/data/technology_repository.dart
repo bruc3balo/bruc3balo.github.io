@@ -10,7 +10,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
 
   final Technologies _springTechnology = Technologies(
     name: 'Spring Framework',
-    brief: 'Spring is a comprehensive Java framework used to develop high-performance, secure, and scalable backend applications. It simplifies backend development, making it ideal for creating microservices, APIs, and enterprise systems.',
+    brief: 'My main backend framework. I use Spring Boot to build REST APIs, microservices and USSD services in Java.',
     url: 'https://spring.io/projects/spring-framework',
     startDate: DateTime(2021, DateTime.august),
     technologyEnum: TechnologyEnum.springTechnology,
@@ -18,36 +18,34 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       const Ability(
         name: 'USSD Applications',
         brief:
-        "Designed dynamic USSD menus with advanced session tracking, enabling interactive mobile services accessible without internet.",
+        "Built USSD menus with session tracking, so people can use mobile services on any phone without internet.",
       ),
       const Ability(
         name: 'Spring Data',
         brief:
-        'Proficient in efficient database operations using Spring Data and Hibernate, optimizing data access layers for seamless performance.',
+        'Build data access layers with Spring Data JPA and Hibernate that stay fast as data grows.',
         points: [
-          "Designed data models and implemented entities for database interaction.",
-          "Developed versatile queries using JPA Specifications and JPQL.",
-          "Optimized database performance with paging, indexing, and constraints.",
-          "Streamlined schema management with Hibernate ORM.",
+          "Designed data models and mapped them to JPA entities.",
+          "Wrote dynamic filters with JPA Specifications and custom JPQL queries.",
+          "Kept queries fast on large tables with pagination, indexes and constraints.",
         ],
       ),
       const Ability(
         name: 'Spring Security',
         brief:
-        'Secured applications using advanced authentication and authorization mechanisms, enhancing user experience and data protection.',
+        'Secure APIs with Spring Security, covering who can log in and what each user is allowed to do.',
         points: [
-          "Implemented JWT-based authentication and multi-factor authorization.",
-          "Controlled endpoint and method-level access for sensitive data.",
-          "Enabled secure multi-tenant systems based on user roles.",
+          "Implemented JWT login and multi-factor authentication.",
+          "Restricted access per endpoint and per method based on user roles.",
+          "Kept each tenant's data isolated in multi-tenant systems.",
         ],
       ),
       const Ability(
         name: 'Microservices',
         brief:
-        'Built resilient microservices using Spring Boot, messaging queues, and API gateways to ensure seamless inter-service communication.',
+        'Built Spring Boot microservices that talk through message queues and sit behind an API gateway.',
         points: [
-          "Integrated microservices using messaging systems for asynchronous operations.",
-          "Externalized configurations for dynamic and flexible deployments.",
+          "Moved slow work off the request path with asynchronous messaging between services.",
           "Designed batch processing systems for high-volume tasks.",
         ],
       ),
