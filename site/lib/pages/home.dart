@@ -74,14 +74,14 @@ class Home extends StatelessComponent {
         ]),
       ]),
       div(id: 'more', classes: 'more', [
-        div(classes: 'rugby', [
+        div(classes: 'rugby reveal', [
           img(src: '/assets/bruce_rugby.webp', alt: 'Bruce playing rugby', width: 1400, height: 933, loading: .lazy),
           div(classes: 'thats-me', [
             img(src: '/assets/rugby_arrow.svg', alt: '', loading: .lazy),
             span(classes: 'script', [.text('That is me LOL')]),
           ]),
         ]),
-        div(classes: 'more-text', [
+        div(classes: 'more-text reveal', [
           h2(classes: 'accent', [.text('A little more about me')]),
           p(classes: 'lead', [.text(_whatIDoSynopsis)]),
           div(classes: 'resumes', [
@@ -104,7 +104,7 @@ class Home extends StatelessComponent {
 
   Component _skills(List<SkillBoard> skills, TechnologyRepository technologies) {
     return section(id: 'skills', classes: 'skills', [
-      div(classes: 'skills-title', [
+      div(classes: 'skills-title reveal', [
         a(href: '/playground', classes: 'skills-link', [
           h2(classes: 'accent', [.text('Skills')]),
           icon('ads_click', classes: 'pulse'),
@@ -115,53 +115,60 @@ class Home extends StatelessComponent {
         ]),
       ]),
       div(classes: 'tech-grid', [
-        for (final s in skills)
-          for (final t in s.technologies)
-            _techTile(technologies.getTechnology(t)),
+        for (final (i, t) in [for (final s in skills) ...s.technologies].indexed)
+          _techTile(technologies.getTechnology(t), i % 4),
       ]),
     ]);
   }
 
-  Component _techTile(Technologies t) {
-    return button(classes: 'tech-tile', attributes: {'data-open': techId(t.technologyEnum)}, [
-      span(classes: 'tile-art', [
-        TechCover(t.technologyEnum),
-        img(classes: 'ring', src: '/assets/skills_hover.svg', alt: '', loading: .lazy),
-      ]),
-      span(classes: 'tile-name', [.text(t.name)]),
-      span(classes: 'tile-xp xp', attributes: {'data-start': isoDate(t.startDate)}, [.text(experience(t.startDate))]),
-    ]);
+  /// [column] staggers the scroll-in animation across a row.
+  Component _techTile(Technologies t, int column) {
+    return button(
+      classes: 'tech-tile reveal',
+      attributes: {'data-open': techId(t.technologyEnum), 'style': '--d: $column'},
+      [
+        span(classes: 'tile-art', [
+          TechCover(t.technologyEnum),
+          img(classes: 'ring', src: '/assets/skills_hover.svg', alt: '', loading: .lazy),
+        ]),
+        span(classes: 'tile-name', [.text(t.name)]),
+        span(classes: 'tile-xp xp', attributes: {'data-start': isoDate(t.startDate)}, [.text(experience(t.startDate))]),
+      ],
+    );
   }
 
   Component _publications(List<RiveArt> rives) {
     final centre = rives.first;
     final orbit = rives.sublist(1);
     return section(id: 'publications', classes: 'publications', [
-      h2(classes: 'accent', [.text('Publications')]),
-      div(classes: 'rive-menu', attributes: {'style': '--count: ${orbit.length}'}, [
+      h2(classes: 'accent reveal', [.text('Publications')]),
+      div(classes: 'rive-menu reveal', attributes: {'style': '--count: ${orbit.length}'}, [
         for (final (i, r) in orbit.indexed)
-          div(classes: 'rive-item', attributes: {'style': '--i: $i', 'title': r.name}, [
+          div(classes: 'rive-item', attributes: {'style': '--i: $i', 'data-name': r.name}, [
             canvas(r),
           ]),
-        button(classes: 'rive-centre', attributes: {'aria-label': 'Show Rive animations', 'title': centre.name}, [
-          canvas(centre),
-        ]),
+        button(
+          classes: 'rive-centre',
+          attributes: {'aria-label': 'Show Rive animations', 'aria-expanded': 'false', 'title': centre.name},
+          [canvas(centre)],
+        ),
       ]),
+      p(classes: 'rive-hint script', [.text('Tap the badge')]),
     ]);
   }
 
   Component canvas(RiveArt r) {
     return Component.element(
       tag: 'canvas',
-      attributes: {'data-rive': '/${r.asset.replaceFirst('bruc3balo/', '')}', 'width': '300', 'height': '300'},
+      attributes: {'data-rive': '/${r.asset.replaceFirst('bruc3balo/', '')}', 'width': '340', 'height': '340'},
       children: const [],
     );
   }
 
   Component _contact() {
     return section(id: 'contact', classes: 'contact', [
-      h2(classes: 'accent', [.text('Contact Me')]),
-      button(classes: 'btn btn-outline btn-email', attributes: {'data-open': 'contact-dialog'}, [
+      h2(classes: 'accent reveal', [.text('Contact Me')]),
+      button(classes: 'btn btn-outline btn-email reveal', attributes: {'data-open': 'contact-dialog'}, [
         icon('email'),
         .text('Send me an email'),
       ]),
