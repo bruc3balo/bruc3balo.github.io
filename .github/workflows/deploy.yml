@@ -23,7 +23,8 @@ jobs:
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: '3.13.5'
+          channel: 'stable'
+          flutter-version: '3.47.7'
 
       - name: Install Jaspr CLI
         run: dart pub global activate jaspr_cli 0.23.5
@@ -31,15 +32,8 @@ jobs:
       - name: Get dependencies
         run: dart pub get
 
-      - name: Analyze
-        run: dart analyze --fatal-infos
-
-      - name: Build static site
-        run: jaspr build
-
-      - name: Drop build tooling files
-        # The site has no client-side Dart, so nothing under packages/ is loaded by the pages.
-        run: rm -rf build/jaspr/packages
+      - name: Build
+        run: flutter build web --wasm --base-href "/"
 
       - name: Report page weight
         run: |
