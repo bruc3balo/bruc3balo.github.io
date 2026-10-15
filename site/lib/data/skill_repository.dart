@@ -65,9 +65,9 @@ class SkillRepositoryImpl extends SkillRepository {
       );
 
   SkillBoard get _umlVisualization => const SkillBoard(
-        name: 'UML visualization',
+        name: 'UML Visualization',
         brief:
-            "Proficient in UML (Unified Modeling Language) visualization, utilizing industry-standard diagrams and notations to depict system architectures, design patterns, and software processes, facilitating clear communication and collaboration among project stakeholders.",
+            "I sketch systems in UML before building them, so everyone agrees on the design before code is written.",
         skillsEnum: SkillsEnum.umlVisualization,
         technologies: [
           TechnologyEnum.visualParadigmTechnology,

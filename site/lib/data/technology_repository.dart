@@ -445,7 +445,7 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
   final Technologies _visualParadigmTechnology = Technologies(
     name: 'Visual Paradigm',
     brief:
-    "Visual Paradigm is a robust tool for software and business process modeling, offering UML diagrams, agile tools, and collaboration capabilities to enhance system design and documentation.",
+    "I use Visual Paradigm to draw activity, data flow and entity-relationship diagrams for the systems I design.",
     startDate: DateTime(2020, DateTime.january),
     technologyEnum: TechnologyEnum.visualParadigmTechnology,
     url: 'https://www.visual-paradigm.com',
@@ -453,10 +453,9 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Activity Diagrams',
         brief:
-        "Proficient in creating activity diagrams to model workflows, enabling clear visualization of system processes and interactions.",
+        "Map out workflows step by step, including decisions and parallel paths.",
         points: [
-          "Modeled complex workflows for software systems.",
-          "Analyzed and optimized processes using clear diagrams.",
+          "Modeled user and system workflows before building them.",
         ],
         url:
         'https://www.visual-paradigm.com/tutorials/how-to-draw-activity-diagram-in-uml',
@@ -464,10 +463,9 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Data Flow Diagrams (DFD)',
         brief:
-        "Skilled in illustrating system data flows with DFDs, providing clarity in data processing and system analysis.",
+        "Show how data moves between processes, stores and outside systems.",
         points: [
-          "Visualized data movement between processes and entities.",
-          "Used DFDs to facilitate efficient communication with stakeholders.",
+          "Used DFDs to walk stakeholders through a system.",
         ],
         url:
         'https://www.visual-paradigm.com/tutorials/data-flow-diagram-dfd.jsp',
@@ -475,10 +473,9 @@ class TechnologyRepositoryImpl extends TechnologyRepository {
       Ability(
         name: 'Entity-Relationship Diagrams (ERD)',
         brief:
-        "Experienced in crafting ERDs for database design, highlighting entity relationships, attributes, and structural organization.",
+        "Design database structure visually before writing any SQL.",
         points: [
-          "Designed comprehensive ERDs to streamline database implementation.",
-          "Simplified data relationships for enhanced database normalization.",
+          "Turned ERDs into normalized schemas.",
         ],
         url:
         'https://www.visual-paradigm.com/tutorials/databasedesign.jsp',
