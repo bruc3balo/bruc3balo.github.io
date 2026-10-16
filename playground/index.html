@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="/"/>
+    <meta charset="utf-8"/>
+    <link href="/favicon.png" rel="icon" type="image/png"/>
+    <link crossorigin href="/fonts/Inter-400.woff2" rel="preload" type="font/woff2" as="font"/>
+    <link crossorigin href="/fonts/Inter-700.woff2" rel="preload" type="font/woff2" as="font"/>
+    <link href="/styles.css" rel="stylesheet"/>
+    <script>document.documentElement.classList.add('js')</script>
+    <script src="/main.js" defer></script>
+    <!--$-->
+    <title>Skills Playground | Bruce Omukoko</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Bruce Omukoko, Flutter and backend developer. Portfolio, skills, publications and contact."/>
+    <meta name="theme-color" content="#25292D"/>
+    <!--/-->
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/"><span class="accent">Bruce</span><span class="surname"> Omukoko</span></a>
+      <span class="page-title">Skills Playground</span>
+    </header>
+    <main class="playground" data-mode="bubbles">
+      <div class="pg-bar">
+        <div class="pg-modes" role="group" aria-label="Playground mode">
+          <button class="pg-mode" data-mode="bubbles" aria-pressed="true">Bubbles</button>
+          <button class="pg-mode" data-mode="magnets" aria-pressed="false">Magnets</button>
+          <button class="pg-mode" data-mode="stars" aria-pressed="false">Constellations</button>
+          <button class="pg-mode" data-mode="pit" aria-pressed="false">Ball pit</button>
+          <button class="pg-mode" data-mode="breakout" aria-pressed="false">Breakout</button>
+        </div>
+        <p class="pg-hint" data-for="bubbles">Bigger bubbles are tools I have used longer. Drag one and fling it.</p>
+        <p class="pg-hint" data-for="magnets">Pick a skill to pull its tools together.</p>
+        <p class="pg-hint" data-for="stars">Hover or tap a star to light up its skill.</p>
+        <p class="pg-hint" data-for="pit">Push them around with your cursor, or tilt your phone.</p>
+        <p class="pg-hint" data-for="breakout">Move to steer the paddle and knock every skill loose.</p>
+        <div class="pg-chips" data-for="magnets">
+          <button class="pg-chip" data-skill="0" aria-pressed="false" style="--skill: #F44336">Backend Development</button>
+          <button class="pg-chip" data-skill="1" aria-pressed="false" style="--skill: #607D8B">DevOps</button>
+          <button class="pg-chip" data-skill="2" aria-pressed="false" style="--skill: #4CAF50">Mobile Development</button>
+          <button class="pg-chip" data-skill="3" aria-pressed="false" style="--skill: #795548">Vector Graphics</button>
+          <button class="pg-chip" data-skill="4" aria-pressed="false" style="--skill: #FF6E40">Database Administration</button>
+          <button class="pg-chip" data-skill="5" aria-pressed="false" style="--skill: #FFFFFF">UML Visualization</button>
+        </div>
+        <div class="pg-actions" data-for="pit"><button class="btn btn-outline pg-shake">Shake</button></div>
+        <div class="pg-actions" data-for="breakout"><span class="pg-score">0 / 13</span><button class="btn btn-outline pg-reset">Reset</button></div>
+      </div>
+      <div class="pg-arena">
+        <svg class="pg-lines" aria-hidden="true"></svg>
+        <button class="floater" data-open="tech-springTechnology" data-skill="0" data-start="2021-08-01" style="--skill: #F44336"><img class="cover" alt loading="lazy" src="/assets/spring.svg"/><span>Spring Framework</span></button>
+        <button class="floater" data-open="tech-dockerTechnology" data-skill="1" data-start="2022-08-01" style="--skill: #607D8B"><img class="cover" alt loading="lazy" src="/assets/docker.svg"/><span>Docker</span></button>
+        <button class="floater" data-open="tech-kubernetesTechnology" data-skill="1" data-start="2024-02-01" style="--skill: #607D8B"><img class="cover" alt loading="lazy" src="/assets/kubernets.svg"/><span>Kubernetes</span></button>
+        <button class="floater" data-open="tech-gitTechnology" data-skill="1" data-start="2017-08-01" style="--skill: #607D8B"><img class="cover" alt loading="lazy" src="/assets/git.svg"/><span>Git</span></button>
+        <button class="floater" data-open="tech-ciCdTechnology" data-skill="1" data-start="2022-08-01" style="--skill: #607D8B">
+          <span class="cover tinted" style="--mask: url(/assets/github-actions.svg); background-color: #2088FF" role="img"></span>
+          <span>CI/CD</span>
+        </button>
+        <button class="floater" data-open="tech-nativeAndroidTechnology" data-skill="2" data-start="2020-05-01" style="--skill: #4CAF50">
+          <span class="cover tinted" style="--mask: url(/assets/android.svg); background-color: #4CAF50" role="img"></span>
+          <span>Native Android</span>
+        </button>
+        <button class="floater" data-open="tech-flutterTechnology" data-skill="2" data-start="2021-01-01" style="--skill: #4CAF50"><img class="cover" alt loading="lazy" src="/assets/flutter.svg"/><span>Flutter</span></button>
+        <button class="floater" data-open="tech-riveTechnology" data-skill="3" data-start="2022-03-01" style="--skill: #795548"><img class="cover" alt loading="lazy" src="/assets/rive.webp"/><span>Rive</span></button>
+        <button class="floater" data-open="tech-adobeIllustratorTechnology" data-skill="3" data-start="2022-03-01" style="--skill: #795548">
+          <img class="cover" alt loading="lazy" src="/assets/adobe-illustrator.svg"/>
+          <span>Adobe Illustrator</span>
+        </button>
+        <button class="floater" data-open="tech-postgresTechnology" data-skill="4" data-start="2020-07-01" style="--skill: #FF6E40"><img class="cover" alt loading="lazy" src="/assets/postgresql.svg"/><span>PostgreSQL</span></button>
+        <button class="floater" data-open="tech-mysqlTechnology" data-skill="4" data-start="2020-06-01" style="--skill: #FF6E40"><img class="cover" alt loading="lazy" src="/assets/mysql.svg"/><span>MySQL</span></button>
+        <button class="floater" data-open="tech-mongoDbTechnology" data-skill="4" data-start="2021-08-01" style="--skill: #FF6E40"><img class="cover" alt loading="lazy" src="/assets/mongo.svg"/><span>MongoDB</span></button>
+        <button class="floater" data-open="tech-visualParadigmTechnology" data-skill="5" data-start="2020-01-01" style="--skill: #FFFFFF">
+          <img class="cover" alt loading="lazy" src="/assets/visual-paradigm.webp"/>
+          <span>Visual Paradigm</span>
+        </button>
+        <div class="pg-brief" data-skill="0" style="--skill: #F44336">
+          <h3>Backend Development</h3>
+          <p>
+            I design and build backend systems that stay fast and reliable under real load. Security is built in from the start, with authentication, access control and careful handling of sensitive data.
+          </p>
+        </div>
+        <div class="pg-brief" data-skill="1" style="--skill: #607D8B">
+          <h3>DevOps</h3>
+          <p>
+            I set up and run the infrastructure my services live on, aiming to keep them available and stable. I automate builds and deployments with GitHub Actions, GitLab CI and Jenkins so releases ship with little or no downtime. I keep traffic between services encrypted and lock down who can reach what. I monitor what's running so problems are caught before users notice them.
+          </p>
+        </div>
+        <div class="pg-brief" data-skill="2" style="--skill: #4CAF50">
+          <h3>Mobile Development</h3>
+          <p>
+            I build mobile apps in Flutter for Android and iOS, and in native Android with Kotlin and Java when an app needs to go deeper into the platform.
+          </p>
+        </div>
+        <div class="pg-brief" data-skill="3" style="--skill: #795548">
+          <h3>Vector Graphics</h3>
+          <p>
+            I draw characters and icons in Adobe Illustrator, then bring them to life as interactive animations in Rive, like the faces on this site.
+          </p>
+        </div>
+        <div class="pg-brief" data-skill="4" style="--skill: #FF6E40">
+          <h3>Database Administration</h3>
+          <p>
+            I design, tune and look after the databases behind my apps, relational and NoSQL, from schema design to backups and access control.
+          </p>
+        </div>
+        <div class="pg-brief" data-skill="5" style="--skill: #FFFFFF">
+          <h3>UML Visualization</h3>
+          <p>
+            I sketch systems in UML before building them, so everyone agrees on the design before code is written.
+          </p>
+        </div>
+        <div class="pg-paddle" aria-hidden="true"></div>
+        <div class="pg-ball" aria-hidden="true"></div>
+      </div>
+    </main>
+    <dialog id="tech-springTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>Spring Framework</h3>
+        <p class="xp" data-start="2021-08-01">5 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <div class="ability"><strong>USSD Applications</strong><p>Built USSD menus with session tracking, so people can use mobile services on any phone without internet.</p></div>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Spring Data</strong><p>Build data access layers with Spring Data JPA and Hibernate that stay fast as data grows.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Designed data models and mapped them to JPA entities.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Wrote dynamic filters with JPA Specifications and custom JPQL queries.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Kept queries fast on large tables with pagination, indexes and constraints.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Spring Security</strong><p>Secure APIs with Spring Security, covering who can log in and what each user is allowed to do.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Implemented JWT login and multi-factor authentication.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Restricted access per endpoint and per method based on user roles.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Kept each tenant's data isolated in multi-tenant systems.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Microservices</strong><p>Built Spring Boot microservices that talk through message queues and sit behind an API gateway.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Moved slow work off the request path with asynchronous messaging between services.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Designed batch processing systems for high-volume tasks.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-dockerTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>Docker</h3>
+        <p class="xp" data-start="2022-08-01">4 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <details><summary class="ability"><strong>Dockerfile Authoring</strong><p>Write Dockerfiles that produce small, fast-building images.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Created lightweight images using multistage builds and slim base images.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Pass settings in through environment variables so one image works in every environment.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Private Registry Management</strong><p>Run private registries so team images stay internal and only the right people can pull them.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Configured basic authentication for registry security.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Testing with Docker Compose</strong><p>Spin up a service and everything it depends on (databases, queues) with one Docker Compose command for local testing.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Split Compose files per service so each one can be tested on its own.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Reused shared Compose config with extends and override files instead of copying it.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-kubernetesTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>Kubernetes</h3>
+        <p class="xp" data-start="2024-02-01">3 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <div class="ability"><strong>Certifications</strong><p>Certified Kubernetes and Cloud Native Associate (KCNA), and currently preparing for the Certified Kubernetes Application Developer (CKAD) exam.</p></div>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Deployment and Scaling</strong><p>Roll out services with zero-downtime updates and scale them automatically as traffic changes.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Used Deployments with rolling updates and multiple replicas.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Set up Horizontal Pod Autoscalers driven by CPU, memory and request metrics.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Networking and Traffic Management</strong><p>Route traffic into and around the cluster so every service is reachable at the right address.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Exposed services with the NGINX Ingress Controller, including TLS certificates.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Provisioned load balancers for distributed traffic handling.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Configuration and Secrets Management</strong><p>Keep app settings and secrets out of images and out of plain text.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Used ConfigMaps for settings that change per environment.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Stored sensitive data securely in encrypted Git repositories.</span></li></ul></details>
+        </li>
+        <li>
+          <div class="ability"><strong>Monitoring and Health Checks</strong><p>Use readiness and liveness probes so Kubernetes only sends traffic to healthy pods and restarts stuck ones.</p></div>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-gitTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>Git</h3>
+        <p class="xp" data-start="2017-08-01">9 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <div class="ability"><strong>Repository Management</strong><p>Set up repositories for teams, with branch protection, required reviews and CI checks on every pull request.</p></div>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Branch Management</strong><p>Keep history clean with feature branches, rebasing and fast-forward merges.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Recovered lost work and broken branches with reflog and reset.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Commit Management</strong><p>Write small, clear commits so history is easy to review and debug.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Tracked down regressions with git bisect.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Cherry-picked fixes onto release branches.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-ciCdTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>CI/CD</h3>
+        <p class="xp" data-start="2022-08-01">4 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <details><summary class="ability"><strong>Pipelines</strong><p>Write pipelines as code that run on every push and pull request.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Built workflows in GitHub Actions, GitLab CI and Jenkins.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Cached dependencies and Docker layers to keep builds fast.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Automated Testing</strong><p>Run tests and checks automatically so broken code never reaches the main branch.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Ran unit and integration tests on every pull request.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Blocked merges until builds, tests and linters pass.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Deployments</strong><p>Ship to production straight from the pipeline, with no manual steps.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Built and pushed Docker images, then rolled them out to Kubernetes.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Kept separate staging and production environments with approval gates.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-nativeAndroidTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>Native Android</h3>
+        <p class="xp" data-start="2020-05-01">6 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <details><summary class="ability"><strong>Android SDK</strong><p>Work across the Android SDK, from lifecycles and navigation to local storage and background work.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Built screens with Compose, plus activities and fragments in older apps.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Stored data locally with Room.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Managed UI state with ViewModel and Kotlin Flow in an MVI setup.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Kotlin and Java</strong><p>Write app logic in Kotlin, and maintain Java codebases.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Ran background work with coroutines and WorkManager so the UI stays smooth.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Handled errors and offline cases so the app fails gracefully.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>UI: Compose and XML</strong><p>Build Material Design UIs declaratively in Jetpack Compose, and in XML layouts for existing screens.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Built reusable composables and layout components.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Used DataBinding to cut boilerplate in XML screens.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Networking with GraphQL</strong><p>Connect apps to GraphQL APIs with Apollo Kotlin.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Generated type-safe Kotlin models from the GraphQL schema.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Used Apollo's normalized cache so screens load fast and work offline.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-flutterTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>Flutter</h3>
+        <p class="xp" data-start="2021-01-01">6 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <details><summary class="ability"><strong>Cross-Platform Development</strong><p>Build responsive UIs that adapt from phones to tablets and the browser.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Composed custom widgets and animations on top of Material.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Connected apps to REST and GraphQL APIs.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>State Management</strong><p>Manage app state with Bloc, Riverpod and Provider, picking the one that fits the app.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Built multi-step navigation flows driven by app state.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Cut unnecessary widget rebuilds to keep scrolling and animations smooth.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Firebase Integration</strong><p>Use Firebase as a ready-made backend for login, data and notifications.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Set up sign-in flows with Firebase Authentication.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Synced data in real time with Cloud Firestore.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Sent push notifications with Firebase Cloud Messaging.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-riveTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>Rive</h3>
+        <p class="xp" data-start="2022-03-01">5 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <div class="ability"><strong>Animating vectors</strong><p>Rig and animate vector characters with bones and keyframes.</p></div>
+        </li>
+        <li>
+          <div class="ability"><strong>State machines</strong><p>Build state machines so animations react to taps, hovers and app state.</p></div>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-adobeIllustratorTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>Adobe Illustrator</h3>
+        <p class="xp" data-start="2022-03-01">5 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <details><summary class="ability"><strong>Character design</strong><p>Draw expressive characters with clean vector paths.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Organized artwork in layers and groups so it's ready to animate in Rive.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Exported art for both print and screen.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-postgresTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>PostgreSQL</h3>
+        <p class="xp" data-start="2020-07-01">6 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <details><summary class="ability"><strong>Database Design</strong><p>Design normalized schemas that keep data consistent as the app grows.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Enforced integrity with primary keys, foreign keys and constraints.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Managed schema changes with versioned migrations.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Advanced Querying</strong><p>Write SQL for reporting and analytics, not just simple lookups.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Combined data with joins, subqueries and CTEs.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Built reports with aggregates and window functions.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Performance Optimization</strong><p>Find and fix slow queries before users feel them.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Read EXPLAIN ANALYZE plans and added the right indexes.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Sized connection pools for high-traffic services.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Data Security</strong><p>Lock down who can read and change data.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Gave each service its own role with only the permissions it needs.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Required TLS on every database connection.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-mysqlTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>MySQL</h3>
+        <p class="xp" data-start="2020-06-01">6 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <div class="ability"><strong>Schema and Performance</strong><p>Design MySQL schemas and tune slow queries with EXPLAIN and the right indexes.</p></div>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Backup and Recovery</strong><p>Make sure data can always be brought back.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Scheduled automatic backups and tested that they restore.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Restored production data after outages.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-mongoDbTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>MongoDB</h3>
+        <p class="xp" data-start="2021-08-01">5 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <details><summary class="ability"><strong>Data Modeling</strong><p>Model documents around how the app reads them.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Chose between embedding and referencing based on access patterns.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Added indexes to match the queries the app actually runs.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Built reports with the aggregation pipeline.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Scalability and Performance</strong><p>Keep MongoDB fast and available as data grows.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Ran replica sets for failover.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Configured sharding to spread large collections across nodes.</span></li><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Found slow operations with the profiler and explain().</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <dialog id="tech-visualParadigmTechnology" class="tech-dialog">
+      <div class="tech-dialog-head">
+        <h3>Visual Paradigm</h3>
+        <p class="xp" data-start="2020-01-01">7 years experience</p>
+        <button class="btn btn-close" data-close>Close</button>
+      </div>
+      <ul class="abilities">
+        <li>
+          <details><summary class="ability"><strong>Activity Diagrams</strong><p>Map out workflows step by step, including decisions and parallel paths.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Modeled user and system workflows before building them.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Data Flow Diagrams (DFD)</strong><p>Show how data moves between processes, stores and outside systems.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Used DFDs to walk stakeholders through a system.</span></li></ul></details>
+        </li>
+        <li>
+          <details><summary class="ability"><strong>Entity-Relationship Diagrams (ERD)</strong><p>Design database structure visually before writing any SQL.</p></summary><ul class="points"><li><svg class="icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg><span>Turned ERDs into normalized schemas.</span></li></ul></details>
+        </li>
+      </ul>
+    </dialog>
+    <script src="/playground.js" defer></script>
+  </body>
+</html>
