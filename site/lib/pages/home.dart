@@ -128,8 +128,11 @@ class Home extends StatelessComponent {
       attributes: {'data-open': techId(t.technologyEnum), 'style': '--d: $column'},
       [
         span(classes: 'tile-art', [
-          TechCover(t.technologyEnum),
-          img(classes: 'ring', src: '/assets/skills_hover.svg', alt: '', loading: .lazy),
+          span(classes: 'tile-hit', []),
+          span(classes: 'tile-scale', [
+            TechCover(t.technologyEnum),
+            img(classes: 'ring', src: '/assets/skills_hover.svg', alt: '', loading: .lazy),
+          ]),
         ]),
         span(classes: 'tile-name', [.text(t.name)]),
         span(classes: 'tile-xp xp', attributes: {'data-start': isoDate(t.startDate)}, [.text(experience(t.startDate))]),
