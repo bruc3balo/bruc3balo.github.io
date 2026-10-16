@@ -74,13 +74,20 @@
   var links = document.querySelectorAll('[data-section]');
   if (links.length && 'IntersectionObserver' in window) {
     var visible = {};
-    var spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
+    var highlight = function () {
       var current = null;
       links.forEach(function (l) { if (visible[l.getAttribute('data-section')]) current = l; });
+      // The last section is too short to reach the middle band, so the bottom of the page counts as it.
+      var root = document.documentElement;
+      if (root.clientHeight + window.scrollY >= root.scrollHeight - 2) current = links[links.length - 1];
       if (!current) return;
       links.forEach(function (l) { l.classList.toggle('active', l === current); });
+    };
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
+      highlight();
     }, { rootMargin: '-40% 0px -40% 0px' });
+    window.addEventListener('scroll', highlight, { passive: true });
     links.forEach(function (l) {
       var s = document.getElementById(l.getAttribute('data-section'));
       if (s) spy.observe(s);

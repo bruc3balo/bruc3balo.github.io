@@ -198,14 +198,19 @@ main > section { padding: 0 30px; margin-bottom: 70px; }
   cursor: pointer;
 }
 .tech-tile:focus-visible { outline: none; }
-.tile-art { position: relative; width: 150px; height: 110px; display: grid; place-items: center; transform: scale(.8); transition: transform .4s var(--ease-spring); }
+/* Only the icon reacts to the pointer: the tile ignores it, and a fixed hit box the size of the resting icon catches
+   it, so the icon shrinking on hover doesn't pull the hit area out from under the cursor. */
+.tech-tile { pointer-events: none; }
+.tile-art { position: relative; width: 150px; height: 110px; display: grid; place-items: center; }
+.tile-hit { position: absolute; inset: 11px 15px; z-index: 1; pointer-events: auto; }
+.tile-scale { position: relative; display: grid; place-items: center; transform: scale(.8); transition: transform .4s var(--ease-spring); }
 .tile-art .cover { width: 150px; height: 110px; }
 .tile-art .cover.tinted { width: 110px; }
 .tile-art .ring { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); max-width: none; opacity: 0; transform: rotate(-30deg) scale(.8); transition: opacity .3s, transform .5s var(--ease-spring); }
-.tech-tile:hover .tile-art, .tech-tile:focus-visible .tile-art { transform: scale(.5); }
-.tech-tile:hover .ring, .tech-tile:focus-visible .ring { opacity: 1; transform: none; }
+.tech-tile:has(.tile-hit:hover) .tile-scale, .tech-tile:focus-visible .tile-scale { transform: scale(.5); }
+.tech-tile:has(.tile-hit:hover) .ring, .tech-tile:focus-visible .ring { opacity: 1; transform: none; }
 .tile-name, .tile-xp { transition: color .3s; }
-.tech-tile:hover .tile-name, .tech-tile:focus-visible .tile-name { color: var(--orange); }
+.tech-tile:has(.tile-hit:hover) .tile-name, .tech-tile:focus-visible .tile-name { color: var(--orange); }
 .cover { display: block; object-fit: contain; }
 .cover.tinted {
   width: 110px;
