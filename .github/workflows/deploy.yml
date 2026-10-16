@@ -2,9 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ speed-improvements ]
+    branches: [ claude-live ]
   pull_request:
-    branches: [ main, speed-improvements ]
+    branches: [ main, claude-live ]
   workflow_dispatch:
 
 permissions:
@@ -59,7 +59,7 @@ jobs:
           path: site/build/jaspr
 
       - name: Deploy
-        if: github.ref == 'refs/heads/speed-improvements' && github.event_name != 'pull_request'
+        if: github.ref == 'refs/heads/claude-live' && github.event_name != 'pull_request'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
