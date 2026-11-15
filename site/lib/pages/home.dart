@@ -194,7 +194,7 @@ class Home extends StatelessComponent {
       // The address in full, for people without a mail client set up, plus a one-click copy (main.js).
       div(classes: 'email-line reveal', [
         span(classes: 'email-address', [.text(_email)]),
-        button(classes: 'btn btn-copy', attributes: {'data-copy': _email, 'type': 'button'}, [.text('Copy')]),
+        button(classes: 'btn btn-copy', attributes: {'data-copy': _email, 'type': 'button', 'aria-live': 'polite'}, [.text('Copy')]),
       ]),
       div(classes: 'socials reveal', [
         a(href: _github, target: .blank, attributes: {'rel': 'noopener'}, classes: 'btn btn-outline btn-social', [
@@ -228,6 +228,11 @@ class Home extends StatelessComponent {
             classes: 'btn btn-outline',
             [.text(subject)],
           ),
+      ]),
+      // For visitors whose mail app isn't set up, the subject links above do nothing, so offer the address too.
+      div(classes: 'email-line', [
+        span(classes: 'email-address', [.text(_email)]),
+        button(classes: 'btn btn-copy', attributes: {'data-copy': _email, 'type': 'button', 'aria-live': 'polite'}, [.text('Copy')]),
       ]),
       button(classes: 'btn btn-close', attributes: {'data-close': ''}, [.text('Never mind')]),
     ]);

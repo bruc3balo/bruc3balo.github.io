@@ -358,6 +358,8 @@ details[open] .points { animation: rise .3s var(--ease-out); }
 .email-line { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; justify-content: center; }
 .email-address { font-family: 'Roboto Mono', monospace; font-size: 18px; user-select: all; }
 .btn-copy { padding: 6px 14px; font-size: 14px; border-color: rgba(255, 250, 255, .3); min-width: 76px; }
+.contact-dialog .email-line { margin: 0 0 16px; }
+.contact-dialog .email-address { font-size: 15px; }
 .btn-copy:hover { border-color: var(--orange); color: var(--orange); }
 .btn-copy.copied { border-color: #4CD58A; color: #4CD58A; }
 .socials { display: flex; gap: 12px; margin-top: 12px; }

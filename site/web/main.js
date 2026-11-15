@@ -32,13 +32,24 @@
       return;
     }
     // Copy-to-clipboard buttons (the email address in Contact).
+    // Without clipboard access (older browsers, blocked permission) the address is selected instead, ready for Ctrl+C.
     var copier = e.target.closest('[data-copy]');
-    if (copier && navigator.clipboard) {
-      navigator.clipboard.writeText(copier.getAttribute('data-copy')).then(function () {
-        copier.textContent = 'Copied';
+    if (copier) {
+      var flash = function (label) {
+        copier.textContent = label;
         copier.classList.add('copied');
         setTimeout(function () { copier.textContent = 'Copy'; copier.classList.remove('copied'); }, 1800);
-      });
+      };
+      var selectAddress = function () {
+        var addr = copier.parentNode.querySelector('.email-address');
+        if (addr) { var r = document.createRange(); r.selectNodeContents(addr); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+        flash('Press Ctrl+C');
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(copier.getAttribute('data-copy')).then(function () { flash('Copied'); }, selectAddress);
+      } else {
+        selectAddress();
+      }
       return;
     }
     var closer = e.target.closest('[data-close]');
