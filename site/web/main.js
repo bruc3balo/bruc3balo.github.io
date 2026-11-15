@@ -31,6 +31,16 @@
       if (d && d.showModal) { e.preventDefault(); d.showModal(); }
       return;
     }
+    // Copy-to-clipboard buttons (the email address in Contact).
+    var copier = e.target.closest('[data-copy]');
+    if (copier && navigator.clipboard) {
+      navigator.clipboard.writeText(copier.getAttribute('data-copy')).then(function () {
+        copier.textContent = 'Copied';
+        copier.classList.add('copied');
+        setTimeout(function () { copier.textContent = 'Copy'; copier.classList.remove('copied'); }, 1800);
+      });
+      return;
+    }
     var closer = e.target.closest('[data-close]');
     if (closer) { closeDialog(closer.closest('dialog')); return; }
     if (e.target.tagName === 'DIALOG') closeDialog(e.target);

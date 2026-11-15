@@ -16,6 +16,8 @@ const _backendResume =
 const _flutterResume =
     'https://github.com/bruc3balo/bruc3balo.github.io/releases/download/flutter/BruceOmukokoFlutterDeveloper.pdf';
 const _email = 'bruceaomukoko@gmail.com';
+const _github = 'https://github.com/bruc3balo';
+const _linkedin = 'https://www.linkedin.com/in/bruce-omukoko';
 
 const _aboutMeSynopsis =
     "Software developer, chilling out in Nairobi who's always up for a good problem solving challenge one line of code at a time.";
@@ -41,6 +43,7 @@ class Home extends StatelessComponent {
         _publications(rives),
         _contact(),
       ]),
+      _footer(),
       for (final s in skills)
         for (final t in s.technologies) TechDialog(technologies.getTechnology(t)),
       _contactDialog(),
@@ -114,9 +117,15 @@ class Home extends StatelessComponent {
           img(src: '/assets/skills_arrow.svg', alt: '', loading: .lazy),
         ]),
       ]),
-      div(classes: 'tech-grid', [
-        for (final (i, t) in [for (final s in skills) ...s.technologies].indexed)
-          _techTile(technologies.getTechnology(t), i % 4),
+      // Grouped by skill board, so the mix (backend, DevOps, mobile, data, design) reads at a glance.
+      div(classes: 'skill-groups', [
+        for (final s in skills)
+          div(classes: 'skill-group', [
+            h3(classes: 'skill-group-name reveal', [.text(s.name)]),
+            div(classes: 'tech-grid', [
+              for (final (i, t) in s.technologies.indexed) _techTile(technologies.getTechnology(t), i % 4),
+            ]),
+          ]),
       ]),
     ]);
   }
@@ -175,6 +184,28 @@ class Home extends StatelessComponent {
         icon('email'),
         .text('Send me an email'),
       ]),
+      // The address in full, for people without a mail client set up, plus a one-click copy (main.js).
+      div(classes: 'email-line reveal', [
+        span(classes: 'email-address', [.text(_email)]),
+        button(classes: 'btn btn-copy', attributes: {'data-copy': _email, 'type': 'button'}, [.text('Copy')]),
+      ]),
+      div(classes: 'socials reveal', [
+        a(href: _github, target: .blank, attributes: {'rel': 'noopener'}, classes: 'btn btn-outline btn-social', [
+          icon('github'),
+          .text('GitHub'),
+        ]),
+        a(href: _linkedin, target: .blank, attributes: {'rel': 'noopener'}, classes: 'btn btn-outline btn-social', [
+          icon('linkedin'),
+          .text('LinkedIn'),
+        ]),
+      ]),
+    ]);
+  }
+
+  Component _footer() {
+    return footer(classes: 'site-footer', [
+      span([.text('© ${DateTime.now().year} Bruce Omukoko')]),
+      span(classes: 'built-with', [.text('Pre-rendered HTML, built with Jaspr.')]),
     ]);
   }
 
