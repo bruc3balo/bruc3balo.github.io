@@ -32,21 +32,28 @@
       return;
     }
     // Copy-to-clipboard buttons (the email address in Contact).
-    // Without clipboard access (older browsers, blocked permission) the address is selected instead, ready for Ctrl+C.
+    // Copy buttons. Without clipboard access (older browsers, blocked permission) the address is selected instead.
     var copier = e.target.closest('[data-copy]');
     if (copier) {
-      var flash = function (label) {
-        copier.textContent = label;
-        copier.classList.add('copied');
-        setTimeout(function () { copier.textContent = 'Copy'; copier.classList.remove('copied'); }, 1800);
+      var live = copier.querySelector('[aria-live]');
+      var done = function (copied) {
+        copier.classList.add(copied ? 'copied' : 'selected');
+        copier.setAttribute('data-tip', copied ? 'Copied!' : 'Press Ctrl+C to copy');
+        if (live) live.textContent = copied ? 'Email address copied' : 'Email address selected, press Control C to copy';
+        clearTimeout(copier._reset);
+        copier._reset = setTimeout(function () {
+          copier.classList.remove('copied', 'selected');
+          copier.setAttribute('data-tip', 'Copy email');
+          if (live) live.textContent = '';
+        }, 2000);
       };
       var selectAddress = function () {
         var addr = copier.parentNode.querySelector('.email-address');
         if (addr) { var r = document.createRange(); r.selectNodeContents(addr); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); }
-        flash('Press Ctrl+C');
+        done(false);
       };
       if (navigator.clipboard) {
-        navigator.clipboard.writeText(copier.getAttribute('data-copy')).then(function () { flash('Copied'); }, selectAddress);
+        navigator.clipboard.writeText(copier.getAttribute('data-copy')).then(function () { done(true); }, selectAddress);
       } else {
         selectAddress();
       }

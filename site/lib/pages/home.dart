@@ -99,11 +99,13 @@ class Home extends StatelessComponent {
             a(href: _backendResume, target: .blank, classes: 'btn btn-resume backend', [
               icon('code'),
               .text('Backend Resume'),
+              span(classes: 'file-type', [.text('PDF')]),
             ]),
             a(href: _flutterResume, target: .blank, classes: 'btn btn-resume flutter', [
               icon('phone'),
               icon('desktop'),
               .text('Flutter Resume'),
+              span(classes: 'file-type', [.text('PDF')]),
             ]),
             img(classes: 'doodle flipped', src: '/assets/flash.svg', alt: '', loading: .lazy),
           ]),
@@ -194,7 +196,7 @@ class Home extends StatelessComponent {
       // The address in full, for people without a mail client set up, plus a one-click copy (main.js).
       div(classes: 'email-line reveal', [
         span(classes: 'email-address', [.text(_email)]),
-        button(classes: 'btn btn-copy', attributes: {'data-copy': _email, 'type': 'button', 'aria-live': 'polite'}, [.text('Copy')]),
+        _copyButton(),
       ]),
       div(classes: 'socials reveal', [
         a(href: _github, target: .blank, attributes: {'rel': 'noopener'}, classes: 'btn btn-outline btn-social', [
@@ -207,6 +209,20 @@ class Home extends StatelessComponent {
         ]),
       ]),
     ]);
+  }
+
+  /// Icon-only copy control: a tooltip names it for pointer users, aria-label for screen readers, and a separate
+  /// live region announces the result. main.js swaps the icon to a tick for a moment after copying.
+  Component _copyButton() {
+    return button(
+      classes: 'icon-btn btn-copy',
+      attributes: {'data-copy': _email, 'type': 'button', 'aria-label': 'Copy email address', 'data-tip': 'Copy email'},
+      [
+        icon('content_copy', classes: 'when-idle'),
+        icon('check', classes: 'when-done'),
+        span(classes: 'sr-only', attributes: {'aria-live': 'polite'}, []),
+      ],
+    );
   }
 
   Component _footer() {
@@ -232,7 +248,7 @@ class Home extends StatelessComponent {
       // For visitors whose mail app isn't set up, the subject links above do nothing, so offer the address too.
       div(classes: 'email-line', [
         span(classes: 'email-address', [.text(_email)]),
-        button(classes: 'btn btn-copy', attributes: {'data-copy': _email, 'type': 'button', 'aria-live': 'polite'}, [.text('Copy')]),
+        _copyButton(),
       ]),
       button(classes: 'btn btn-close', attributes: {'data-close': ''}, [.text('Never mind')]),
     ]);

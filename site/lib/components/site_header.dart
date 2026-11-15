@@ -11,6 +11,8 @@ class SiteHeader extends StatelessComponent {
   @override
   Component build(BuildContext context) {
     return header(classes: 'site-header', [
+      // First focusable element: lets keyboard users jump past the navigation.
+      if (!playground) a(href: '#about', classes: 'skip-link', [.text('Skip to content')]),
       a(href: playground ? '/' : '#about', classes: 'brand', [
         span(classes: 'accent', [.text('Bruce')]),
         span(classes: 'surname', [.text(' Omukoko')]),
