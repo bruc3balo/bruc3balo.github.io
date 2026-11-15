@@ -31,6 +31,34 @@
       if (d && d.showModal) { e.preventDefault(); d.showModal(); }
       return;
     }
+    // Copy-to-clipboard buttons (the email address in Contact).
+    // Copy buttons. Without clipboard access (older browsers, blocked permission) the address is selected instead.
+    var copier = e.target.closest('[data-copy]');
+    if (copier) {
+      var live = copier.querySelector('[aria-live]');
+      var done = function (copied) {
+        copier.classList.add(copied ? 'copied' : 'selected');
+        copier.setAttribute('data-tip', copied ? 'Copied!' : 'Press Ctrl+C to copy');
+        if (live) live.textContent = copied ? 'Email address copied' : 'Email address selected, press Control C to copy';
+        clearTimeout(copier._reset);
+        copier._reset = setTimeout(function () {
+          copier.classList.remove('copied', 'selected');
+          copier.setAttribute('data-tip', 'Copy email');
+          if (live) live.textContent = '';
+        }, 2000);
+      };
+      var selectAddress = function () {
+        var addr = copier.parentNode.querySelector('.email-address');
+        if (addr) { var r = document.createRange(); r.selectNodeContents(addr); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+        done(false);
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(copier.getAttribute('data-copy')).then(function () { done(true); }, selectAddress);
+      } else {
+        selectAddress();
+      }
+      return;
+    }
     var closer = e.target.closest('[data-close]');
     if (closer) { closeDialog(closer.closest('dialog')); return; }
     if (e.target.tagName === 'DIALOG') closeDialog(e.target);

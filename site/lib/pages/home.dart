@@ -16,6 +16,8 @@ const _backendResume =
 const _flutterResume =
     'https://github.com/bruc3balo/bruc3balo.github.io/releases/download/flutter/BruceOmukokoFlutterDeveloper.pdf';
 const _email = 'bruceaomukoko@gmail.com';
+const _github = 'https://github.com/bruc3balo';
+const _linkedin = 'https://www.linkedin.com/in/bruce-omukoko';
 
 const _aboutMeSynopsis =
     "Software developer, chilling out in Nairobi who's always up for a good problem solving challenge one line of code at a time.";
@@ -41,6 +43,7 @@ class Home extends StatelessComponent {
         _publications(rives),
         _contact(),
       ]),
+      _footer(),
       for (final s in skills)
         for (final t in s.technologies) TechDialog(technologies.getTechnology(t)),
       _contactDialog(),
@@ -84,16 +87,25 @@ class Home extends StatelessComponent {
         div(classes: 'more-text reveal', [
           h2(classes: 'accent', [.text('A little more about me')]),
           p(classes: 'lead', [.text(_whatIDoSynopsis)]),
+          div(classes: 'cert', [
+            icon('verified'),
+            span([
+              strong([.text('KCNA certified')]),
+              .text(' · Kubernetes and Cloud Native Associate'),
+            ]),
+          ]),
           div(classes: 'resumes', [
             img(classes: 'doodle', src: '/assets/flash.svg', alt: '', loading: .lazy),
             a(href: _backendResume, target: .blank, classes: 'btn btn-resume backend', [
               icon('code'),
               .text('Backend Resume'),
+              span(classes: 'file-type', [.text('PDF')]),
             ]),
             a(href: _flutterResume, target: .blank, classes: 'btn btn-resume flutter', [
               icon('phone'),
               icon('desktop'),
               .text('Flutter Resume'),
+              span(classes: 'file-type', [.text('PDF')]),
             ]),
             img(classes: 'doodle flipped', src: '/assets/flash.svg', alt: '', loading: .lazy),
           ]),
@@ -114,9 +126,15 @@ class Home extends StatelessComponent {
           img(src: '/assets/skills_arrow.svg', alt: '', loading: .lazy),
         ]),
       ]),
-      div(classes: 'tech-grid', [
-        for (final (i, t) in [for (final s in skills) ...s.technologies].indexed)
-          _techTile(technologies.getTechnology(t), i % 4),
+      // Grouped by skill board, so the mix (backend, DevOps, mobile, data, design) reads at a glance.
+      div(classes: 'skill-groups', [
+        for (final s in skills)
+          div(classes: 'skill-group', [
+            h3(classes: 'skill-group-name reveal', [.text(s.name)]),
+            div(classes: 'tech-grid', [
+              for (final (i, t) in s.technologies.indexed) _techTile(technologies.getTechnology(t), i % 4),
+            ]),
+          ]),
       ]),
     ]);
   }
@@ -175,6 +193,42 @@ class Home extends StatelessComponent {
         icon('email'),
         .text('Send me an email'),
       ]),
+      // The address in full, for people without a mail client set up, plus a one-click copy (main.js).
+      div(classes: 'email-line reveal', [
+        span(classes: 'email-address', [.text(_email)]),
+        _copyButton(),
+      ]),
+      div(classes: 'socials reveal', [
+        a(href: _github, target: .blank, attributes: {'rel': 'noopener'}, classes: 'btn btn-outline btn-social', [
+          icon('github'),
+          .text('GitHub'),
+        ]),
+        a(href: _linkedin, target: .blank, attributes: {'rel': 'noopener'}, classes: 'btn btn-outline btn-social', [
+          icon('linkedin'),
+          .text('LinkedIn'),
+        ]),
+      ]),
+    ]);
+  }
+
+  /// Icon-only copy control: a tooltip names it for pointer users, aria-label for screen readers, and a separate
+  /// live region announces the result. main.js swaps the icon to a tick for a moment after copying.
+  Component _copyButton() {
+    return button(
+      classes: 'icon-btn btn-copy',
+      attributes: {'data-copy': _email, 'type': 'button', 'aria-label': 'Copy email address', 'data-tip': 'Copy email'},
+      [
+        icon('content_copy', classes: 'when-idle'),
+        icon('check', classes: 'when-done'),
+        span(classes: 'sr-only', attributes: {'aria-live': 'polite'}, []),
+      ],
+    );
+  }
+
+  Component _footer() {
+    return footer(classes: 'site-footer', [
+      span([.text('© ${DateTime.now().year} Bruce Omukoko')]),
+      span(classes: 'built-with', [.text('Pre-rendered HTML, built with Jaspr.')]),
     ]);
   }
 
@@ -190,6 +244,11 @@ class Home extends StatelessComponent {
             classes: 'btn btn-outline',
             [.text(subject)],
           ),
+      ]),
+      // For visitors whose mail app isn't set up, the subject links above do nothing, so offer the address too.
+      div(classes: 'email-line', [
+        span(classes: 'email-address', [.text(_email)]),
+        _copyButton(),
       ]),
       button(classes: 'btn btn-close', attributes: {'data-close': ''}, [.text('Never mind')]),
     ]);
