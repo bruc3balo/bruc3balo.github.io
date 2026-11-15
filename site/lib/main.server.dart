@@ -26,7 +26,7 @@ void main() {
     // Link previews (LinkedIn, Slack, WhatsApp) show a title, summary and photo instead of a bare URL.
     head: [
       meta(attributes: {'property': 'og:title', 'content': 'Bruce Omukoko | Backend & Flutter developer'}),
-      meta(attributes: {'property': 'og:description', 'content': 'Spring Boot backends, Flutter apps and Rive animations. Portfolio, skills and contact.'}),
+      meta(attributes: {'property': 'og:description', 'content': 'Spring Boot backends, Flutter apps and Rive animations. KCNA certified. Portfolio, skills and contact.'}),
       meta(attributes: {'property': 'og:image', 'content': 'https://bruc3balo.github.io/assets/og.jpg'}),
       meta(attributes: {'property': 'og:url', 'content': 'https://bruc3balo.github.io/'}),
       meta(attributes: {'property': 'og:type', 'content': 'website'}),

@@ -87,6 +87,13 @@ class Home extends StatelessComponent {
         div(classes: 'more-text reveal', [
           h2(classes: 'accent', [.text('A little more about me')]),
           p(classes: 'lead', [.text(_whatIDoSynopsis)]),
+          div(classes: 'cert', [
+            icon('verified'),
+            span([
+              strong([.text('KCNA certified')]),
+              .text(' · Kubernetes and Cloud Native Associate'),
+            ]),
+          ]),
           div(classes: 'resumes', [
             img(classes: 'doodle', src: '/assets/flash.svg', alt: '', loading: .lazy),
             a(href: _backendResume, target: .blank, classes: 'btn btn-resume backend', [
